@@ -1,0 +1,161 @@
+For an image portfolio, the goal of your CSS is to make your photos the star of the show. You want a beautifully aligned grid, clean typography, some smooth interactions (like hover effects), and it needs to be "responsive" so it looks good on both big monitors and cell phones.
+
+Here is a complete, modern CSS template you can put into your style.css file. It goes perfectly with the HTML provided earlier.
+
+css
+/* =========================================
+   1. CSS Variables (Your Color Palette)
+   ========================================= */
+:root {
+  /* You can change these colors to match your brand */
+  --bg-color: #fcfcfc;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --accent-color: #007bff;
+  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+/* =========================================
+   2. Reset & Base Styles
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  /* Add some breathing room on the edges of the screen */
+  padding: 0 5%;
+  max-width: 1400px; /* Prevents site from getting too wide on huge screens */
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--accent-color);
+}
+/* =========================================
+   3. Header & Navigation
+   ========================================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0;
+  margin-bottom: 40px;
+}
+.logo h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+}
+.logo p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+nav ul li a {
+  font-weight: 500;
+  font-size: 1rem;
+}
+/* =========================================
+   4. Intro Section
+   ========================================= */
+.intro {
+  margin-bottom: 60px;
+  text-align: left;
+  max-width: 600px;
+}
+.intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.intro p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+/* =========================================
+   5. The Image Gallery (CSS Grid)
+   ========================================= */
+.photo-grid {
+  display: grid;
+  /* Creates a responsive grid: boxes won't get smaller than 300px,
+     but will automatically fill available space */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px; /* Space between photos */
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden; /* Keeps images neatly inside their box */
+  border-radius: 8px; /* Adds soft rounded corners to images */
+  /* Adds a very subtle shadow */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  background: white;
+}
+.gallery-item img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover; /* Ensures images fill the square without stretching */
+  display: block;
+  transition: transform 0.5s ease; /* Prepares the image for a hover animation */
+}
+.gallery-item figcaption {
+  padding: 15px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+}
+/* Hover Animation: Zoom the image slightly when hovered */
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+/* =========================================
+   6. Footer
+   ========================================= */
+footer {
+  margin-top: 100px;
+  padding: 40px 0;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.social-links {
+  display: flex;
+  gap: 20px;
+}
+/* =========================================
+   7. Mobile Responsiveness
+   ========================================= */
+/* When the screen gets smaller than 768px (like a phone or small tablet) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .intro h2 {
+    font-size: 2rem;
+  }
+  footer {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
