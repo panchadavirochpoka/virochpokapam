@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Portfolio | Pink & White Modern Showcase</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="virochpokapam.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,7 +18,7 @@
 
 <div class="container">
     <nav class="navbar">
-        <div class="logo">✦ PAM"S ART PORTFOLIO</div>
+        <div class="logo">✦ ART PORTFOLIO</div>
         <div class="nav-links">
             <a href="#work" class="active" data-hover>Work</a>
             <a href="#statement" data-hover>Statement</a>
@@ -31,13 +31,21 @@
             <div class="hero-text reveal active">
                 <div class="greeting">Multidisciplinary Artist</div>
                 <h1>Where vision meets<br><span class="typewriter-text" id="typewriter">excellent beauty</span></h1>
-                <div class="artist-statement-card" id="statement">
-                    <h3><i class="fas fa-feather-alt"></i> Artist Statement</h3>
-                    <p>My work explores the intersection of digital fabrication, organic forms, and emotional cartography. Through large format prints, 3D modeling, and video art, I create immersive narratives that question material permanence. Pink isn't just a color; it's a state of vulnerability and power.</p>
+
+                <div class="hero-bio-layout" id="statement">
+                    <div class="artist-statement-card">
+                        <h3><i class="fas fa-feather-alt"></i> Artist Statement</h3>
+                        <p>My work explores the intersection of digital fabrication, organic forms, and emotional cartography. Through large format prints, 3D modeling, and video art, I create immersive narratives that question material permanence. Pink isn't just a color; it's a state of vulnerability and power.</p>
+                    </div>
+
+                    <div class="profile-photo-wrapper" data-hover>
+                        <img src="your-photo.jpg" alt="Artist Profile" class="profile-photo">
+                    </div>
                 </div>
             </div>
-            <div class="hero-media reveal active">
-                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" class="hero-image" alt="Hero Art">
+
+            <div class="hero-media reveal active" data-hover>
+                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" class="hero-image" alt="Featured Art">
             </div>
         </div>
     </div>
@@ -105,10 +113,10 @@
                 <h2>Let's create something <span>extraordinary</span>.</h2>
                 <p>I am currently open for commissions, gallery exhibitions, and creative collaborations. Drop me a line and I'll get back to you within 24 hours.</p>
                 <div class="contact-method">
-                    <i class="fas fa-paper-plane"></i><span>pampanchada@gmail.com</span>
+                    <i class="fas fa-paper-plane"></i><span>hello@artportfolio.com</span>
                 </div>
                 <div class="contact-method">
-                    <i class="fas fa-location-dot"></i><span>424-653-4829</span>
+                    <i class="fas fa-location-dot"></i><span>Studio 402, Arts District</span>
                 </div>
             </div>
 
@@ -172,7 +180,7 @@
             <h2>Morphic Resonance</h2>
             <div class="project-tag">3D · Blender · Real-time</div>
             <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Morphic Resonance" class="modal-image">
-            <p><strong>The Concept:</strong> Morphic Resonance is an investigation into digital biology. Can cold geometry evoke the warmth of organic life?</p>
+            <p><strong>The Concept:</strong> Morphic Resonance is an investigation into digital biology.</p>
         </div>
     </div>
 </div>
@@ -189,12 +197,13 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <p><strong>The Concept:</strong> A 9-minute experimental video essay that weaves together the themes of memory decay and technological glitches. "Folds of Time" visually represents how the human brain edits and corrupts memories over time.</p>
+            <p><strong>The Concept:</strong> A 9-minute experimental video essay weaving analogue footage and glitches.</p>
         </div>
     </div>
 </div>
 
 <script>
+    /* Javascript remains unchanged */
     // 1. CURSOR
     const cursor = document.getElementById('cursorFollower');
     document.addEventListener('mousemove', e => {
@@ -207,7 +216,7 @@
     });
 
     // 2. TYPEWRITER
-    const words = ["excellent beauty.", "creative dreams.", "pop textures."];
+    const words = ["excellent beauty.", "digital dreams.", "bold textures."];
     let i = 0, j = 0, del = false;
     function type() {
         const cur = words[i];
@@ -220,7 +229,7 @@
     }
     type();
 
-    // 3. CANVAS (Height adjusted to 160px)
+    // 3. CANVAS
     const canvas = document.getElementById('doodleCanvas');
     const ctx = canvas.getContext('2d');
     let drawing = false;
