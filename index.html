@@ -2,19 +2,337 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Portfolio | Pink & White Modern Showcase</title>
-    <!-- Google Fonts: modern, clean, elegant -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (free icons) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== ALL PINK & WHITE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff9fb;  /* soft pink-white background */
+            font-family: 'Inter', sans-serif;
+            color: #2d2a2e;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* PINK NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #e8799b, #c4456e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-family: 'Space Grotesk', monospace;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #4a3942;
+            transition: 0.2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #c4456e;
+            border-bottom-color: #f4accc;
+        }
+
+        /* PINK HERO SECTION */
+        .hero {
+            margin: 3rem 0 4rem;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+        .hero-text {
+            flex: 1.2;
+            min-width: 280px;
+        }
+        .greeting {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #e48bb0;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .hero-text h1 {
+            font-size: 3.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #251d21;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .hero-text h1 span {
+            background: linear-gradient(120deg, #f5a3c7, #ee82aa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* ARTIST STATEMENT CARD - PINK THEME */
+        .artist-statement-card {
+            background: white;
+            border-radius: 32px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 20px 35px -12px rgba(236, 112, 139, 0.15);
+            border: 1px solid #ffdfea;
+        }
+        .artist-statement-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #b83b62;
+        }
+        .artist-statement-card h3 i {
+            font-size: 1.6rem;
+            color: #f3a1c2;
+        }
+        .artist-statement-card p {
+            font-size: 1.05rem;
+            line-height: 1.55;
+            color: #3c2e36;
+        }
+
+        .hero-media {
+            flex: 0.9;
+            text-align: center;
+        }
+        .circle-deco {
+            background: #ffeef4;
+            border-radius: 60% 40% 50% 50% / 45% 40% 60% 55%;
+            padding: 1.2rem;
+            display: inline-block;
+        }
+        .placeholder-icon {
+            font-size: 8rem;
+            color: #f5c6da;
+        }
+
+        /* SECTION TITLES - PINK ACCENT */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 3rem 0 1.8rem;
+            position: relative;
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 55%;
+            height: 3px;
+            background: linear-gradient(90deg, #f7afce, #ffc0dd);
+            border-radius: 4px;
+        }
+
+        /* PROJECT CARDS - PINK BORDERS & SHADOWS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.3s;
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.05);
+            border: 1px solid #ffe2ef;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 38px -14px rgba(196, 69, 110, 0.25);
+            border-color: #fbc4db;
+        }
+        .project-img {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+        }
+        .project-card:nth-child(1) .project-img { background: #fae9f0; }
+        .project-card:nth-child(2) .project-img { background: #fbebf2; }
+        .project-card:nth-child(3) .project-img { background: #ffe7ef; }
+
+        .mock-badge {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ac3d62;
+        }
+        .project-info {
+            padding: 1.6rem;
+        }
+        .project-info h3 {
+            font-size: 1.55rem;
+            font-weight: 600;
+            color: #2b1f25;
+            margin-bottom: 0.65rem;
+        }
+        .project-tag {
+            display: inline-block;
+            background: #ffeef4;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #c4456e;
+            margin-bottom: 1rem;
+        }
+        .project-info p {
+            color: #4c3a44;
+            margin-bottom: 1.3rem;
+            font-size: 0.95rem;
+        }
+        .project-link {
+            text-decoration: none;
+            font-weight: 600;
+            color: #c4456e;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.2s;
+        }
+        .project-link:hover {
+            gap: 12px;
+            color: #a13458;
+        }
+
+        /* PROCESS CARD - PINK */
+        .process-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 1rem 0 2rem;
+            border: 1px solid #ffeef5;
+        }
+        .process-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .process-inner h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #c84f77;
+        }
+        .process-icons i {
+            font-size: 3rem;
+            color: #f3a7c6;
+        }
+        .process-icons i:first-child { margin-right: 1rem; }
+
+        /* QUOTE BLOCK - PINK */
+        .quote-block {
+            text-align: center;
+            margin: 3rem 0 1.5rem;
+        }
+        .quote-inner {
+            background: linear-gradient(120deg, #ffffff, #fff7fa);
+            border-radius: 56px;
+            padding: 2rem;
+            border: 1px solid #fad2e5;
+        }
+        .quote-inner i {
+            font-size: 2rem;
+            color: #f0a6c6;
+        }
+        .quote-inner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 1rem auto 0;
+            font-style: italic;
+        }
+        .quote-author {
+            margin-top: 1rem;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* DIVIDER */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, #ffe2ef, #ffc0dd, #ffe2ef);
+            margin: 2rem 0;
+        }
+
+        /* FOOTER - PINK */
+        .footer {
+            text-align: center;
+            padding: 2.8rem 0;
+            margin-top: 2rem;
+            color: #b27c93;
+            border-top: 1px solid #ffdeea;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+        .social-icons a {
+            color: #dc8cad;
+            font-size: 1.5rem;
+            transition: transform 0.2s;
+        }
+        .social-icons a:hover {
+            color: #c4456e;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 780px) {
+            .container { padding: 0 1.5rem; }
+            .navbar { flex-direction: column; }
+            .hero-text h1 { font-size: 2.4rem; }
+            .section-title { font-size: 1.75rem; }
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- navigation -->
     <nav class="navbar">
         <div class="logo">✦ ART PORTFOLIO</div>
         <div class="nav-links">
@@ -24,13 +342,11 @@
         </div>
     </nav>
 
-    <!-- hero & artist statement area (integrated) -->
     <div class="hero">
         <div class="hero-grid">
             <div class="hero-text">
                 <div class="greeting">Multidisciplinary Artist</div>
                 <h1>Where vision meets <span>fragile beauty</span></h1>
-                <!-- Artist Statement card -->
                 <div class="artist-statement-card">
                     <h3><i class="fas fa-feather-alt"></i> Artist Statement</h3>
                     <p>My work explores the intersection of digital fabrication, organic forms, and emotional cartography. Through large format prints, 3D modeling, and video art, I create immersive narratives that question material permanence. Each project becomes a dialogue between texture, light, and memory — inviting the viewer into a soft yet bold visual universe. Pink isn't just a color; it's a state of vulnerability and power.</p>
@@ -44,60 +360,52 @@
         </div>
     </div>
 
-    <!-- PROJECTS SECTION : 3 core projects -->
     <div>
         <h2 class="section-title">Featured projects</h2>
         <div class="projects-grid">
-
-            <!-- 1. Large format print -->
             <div class="project-card">
                 <div class="project-img">
-                    <div class="mock-badge"><i class="fas fa-print"></i>  LARGE FORMAT</div>
+                    <div class="mock-badge"><i class="fas fa-print"></i> LARGE FORMAT</div>
                 </div>
                 <div class="project-info">
                     <h3>Ephemeral Topographies</h3>
                     <div class="project-tag">Large format print · Archival ink</div>
-                    <p>A triptych of monumental prints (150cm x 200cm) exploring organic textures, fluid geometries and layered pigments. The work evokes shifting landscapes, where digital manipulation meets traditional paper质感.</p>
+                    <p>A triptych of monumental prints (150cm x 200cm) exploring organic textures, fluid geometries and layered pigments.</p>
                     <a href="#" class="project-link">View project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
-            <!-- 2. 3D model project -->
             <div class="project-card">
                 <div class="project-img">
-                    <div class="mock-badge"><i class="fas fa-cube"></i>  3D MODEL</div>
+                    <div class="mock-badge"><i class="fas fa-cube"></i> 3D MODEL</div>
                 </div>
                 <div class="project-info">
                     <h3>Morphic Resonance</h3>
                     <div class="project-tag">3D sculpture · Blender · Real-time</div>
-                    <p>Interactive 3D model series based on generative algorithms and biomorphic structures. Rendered in high-resolution wireframes and soft particle simulations. Exhibited as a virtual gallery and AR experience.</p>
+                    <p>Interactive 3D model series based on generative algorithms and biomorphic structures. Rendered in high-resolution wireframes.</p>
                     <a href="#" class="project-link">Explore 3D <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
-            <!-- 3. video making -->
             <div class="project-card">
                 <div class="project-img">
-                    <div class="mock-badge"><i class="fas fa-video"></i>  VIDEO ART</div>
+                    <div class="mock-badge"><i class="fas fa-video"></i> VIDEO ART</div>
                 </div>
                 <div class="project-info">
                     <h3>Folds of Time</h3>
                     <div class="project-tag">Short film · 4K · experimental</div>
-                    <p>A 9-minute meditative video essay weaving analogue footage, digital glitches, and hand-drawn animation. It reflects on memory loops and the fragility of perception. Selected at international film festivals.</p>
+                    <p>A 9-minute meditative video essay weaving analogue footage, digital glitches, and hand-drawn animation.</p>
                     <a href="#" class="project-link">Watch trailer <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- extra info about process / tools -->
     <div class="divider"></div>
 
     <div class="process-card">
         <div class="process-inner">
             <div>
-                <h3><i class="fas fa-paintbrush-fine"></i>  Creative workflow</h3>
-                <p>From initial sketches to large-format pigment prints, 3D sculpting in Blender / ZBrush and cinematic post-production in DaVinci — each piece is a unique dialogue between traditional & digital realms.</p>
+                <h3><i class="fas fa-paintbrush-fine"></i> Creative workflow</h3>
+                <p>From initial sketches to large-format pigment prints, 3D sculpting in Blender and cinematic post-production — each piece is a unique dialogue between traditional & digital realms.</p>
             </div>
             <div class="process-icons">
                 <i class="fas fa-palette"></i>
@@ -106,7 +414,6 @@
         </div>
     </div>
 
-    <!-- second statement / additional quote block -->
     <div class="quote-block">
         <div class="quote-inner">
             <i class="fas fa-quote-left"></i>
@@ -115,37 +422,17 @@
         </div>
     </div>
 
-    <!-- footer with social and credits -->
     <footer class="footer">
         <div class="social-icons">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
-            <a href="#" aria-label="Vimeo"><i class="fab fa-vimeo-v"></i></a>
-            <a href="#" aria-label="Github"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-behance"></i></a>
+            <a href="#"><i class="fab fa-vimeo-v"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
         </div>
         <p>© 2025 · Pink Aesthetic Portfolio — All works original</p>
-        <p class="footer-tagline">✧ large format print | 3d model | video making ✧</p>
+        <p style="font-size: 0.75rem; margin-top: 0.6rem;">✧ large format print | 3d model | video making ✧</p>
     </footer>
 </div>
 
-<!-- simple interactivity for nav smooth highlights -->
-<script>
-    const navLinks = document.querySelectorAll('.nav-links a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-            if(this.innerText === 'Statement') {
-                document.querySelector('.artist-statement-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else if(this.innerText === 'Work') {
-                document.querySelector('.projects-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else if(this.innerText === 'Contact') {
-                document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-    console.log('🌸 Pink artist portfolio ready — showcase for large format print, 3d model, video making');
-</script>
 </body>
 </html>
