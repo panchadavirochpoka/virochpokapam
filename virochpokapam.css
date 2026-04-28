@@ -1,3 +1,136 @@
+You got it! Let's put them back into two separate files. I have kept the typo fix ("excellent beauty") and made sure all those hidden characters are completely scrubbed out.
+
+Here is your separated code.
+
+### 1. The HTML File (`index.html`)
+Save this exact code as `index.html`. It is now linked to look for the separate CSS file.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Portfolio | Pink & White Modern Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <nav class="navbar">
+        <div class="logo">✦ ART PORTFOLIO</div>
+        <div class="nav-links">
+            <a href="#" class="active">Work</a>
+            <a href="#">Statement</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <div class="greeting">Multidisciplinary Artist</div>
+                <h1>Where vision meets <span>excellent beauty</span></h1>
+                <div class="artist-statement-card">
+                    <h3><i class="fas fa-feather-alt"></i> Artist Statement</h3>
+                    <p>My work explores the intersection of digital fabrication, organic forms, and emotional cartography. Through large format prints, 3D modeling, and video art, I create immersive narratives that question material permanence. Each project becomes a dialogue between texture, light, and memory — inviting the viewer into a soft yet bold visual universe. Pink isn't just a color; it's a state of vulnerability and power.</p>
+                </div>
+            </div>
+            <div class="hero-media">
+                <div class="circle-deco">
+                    <i class="fas fa-palette placeholder-icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2 class="section-title">Featured projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="mock-badge"><i class="fas fa-print"></i> LARGE FORMAT</div>
+                </div>
+                <div class="project-info">
+                    <h3>Ephemeral Topographies</h3>
+                    <div class="project-tag">Large format print · Archival ink</div>
+                    <p>A triptych of monumental prints (150cm x 200cm) exploring organic textures, fluid geometries and layered pigments.</p>
+                    <a href="#" class="project-link">View project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="mock-badge"><i class="fas fa-cube"></i> 3D MODEL</div>
+                </div>
+                <div class="project-info">
+                    <h3>Morphic Resonance</h3>
+                    <div class="project-tag">3D sculpture · Blender · Real-time</div>
+                    <p>Interactive 3D model series based on generative algorithms and biomorphic structures. Rendered in high-resolution wireframes.</p>
+                    <a href="#" class="project-link">Explore 3D <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="mock-badge"><i class="fas fa-video"></i> VIDEO ART</div>
+                </div>
+                <div class="project-info">
+                    <h3>Folds of Time</h3>
+                    <div class="project-tag">Short film · 4K · experimental</div>
+                    <p>A 9-minute meditative video essay weaving analogue footage, digital glitches, and hand-drawn animation.</p>
+                    <a href="#" class="project-link">Watch trailer <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="process-card">
+        <div class="process-inner">
+            <div>
+                <h3><i class="fas fa-paintbrush-fine"></i> Creative workflow</h3>
+                <p>From initial sketches to large-format pigment prints, 3D sculpting in Blender and cinematic post-production — each piece is a unique dialogue between traditional & digital realms.</p>
+            </div>
+            <div class="process-icons">
+                <i class="fas fa-palette"></i>
+                <i class="fas fa-camera"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="quote-block">
+        <div class="quote-inner">
+            <i class="fas fa-quote-left"></i>
+            <p>"I build worlds that whisper. The pink monochrome, the tactile surface, the moving image — all are vessels for emotional architecture."</p>
+            <p class="quote-author">— Artist, 2025</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-behance"></i></a>
+            <a href="#"><i class="fab fa-vimeo-v"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+        <p>© 2025 · Pink Aesthetic Portfolio — All works original</p>
+        <p style="font-size: 0.75rem; margin-top: 0.6rem;">✧ large format print | 3d model | video making ✧</p>
+    </footer>
+</div>
+
+</body>
+</html>
+```
+
+---
+
+### 2. The CSS File (`style.css`)
+Save this file in the **exact same folder** as your HTML file. Make sure your computer saves it as `style.css` and doesn't secretly add a `.txt` to the end!
+
+```css
 /* ===== ALL PINK & WHITE STYLES ===== */
 * {
     margin: 0;
@@ -177,10 +310,12 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 3.2rem;
+    background-size: cover;
+    background-position: center;
 }
-.project-card:nth-child(1) .project-img { background: #fae9f0; }
-.project-card:nth-child(2) .project-img { background: #fbebf2; }
-.project-card:nth-child(3) .project-img { background: #ffe7ef; }
+.project-card:nth-child(1) .project-img { background-color: #fae9f0; }
+.project-card:nth-child(2) .project-img { background-color: #fbebf2; }
+.project-card:nth-child(3) .project-img { background-color: #ffe7ef; }
 
 .mock-badge {
     background: rgba(255, 255, 255, 0.85);
@@ -313,9 +448,18 @@ body {
     transform: scale(1.1);
 }
 
+/* IMAGE CLASSES ADDED FOR YOU */
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 32px;
+    box-shadow: 0 20px 40px -10px rgba(196, 69, 110, 0.2);
+}
+
 @media (max-width: 780px) {
     .container { padding: 0 1.5rem; }
     .navbar { flex-direction: column; }
     .hero-text h1 { font-size: 2.4rem; }
     .section-title { font-size: 1.75rem; }
 }
+```
