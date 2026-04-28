@@ -1,161 +1,396 @@
-For an image portfolio, the goal of your CSS is to make your photos the star of the show. You want a beautifully aligned grid, clean typography, some smooth interactions (like hover effects), and it needs to be "responsive" so it looks good on both big monitors and cell phones.
-
-Here is a complete, modern CSS template you can put into your style.css file. It goes perfectly with the HTML provided earlier.
-
-css
-/* =========================================
-   1. CSS Variables (Your Color Palette)
-   ========================================= */
-:root {
-  /* You can change these colors to match your brand */
-  --bg-color: #fcfcfc;
-  --text-primary: #1a1a1a;
-  --text-secondary: #666666;
-  --accent-color: #007bff;
-  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-/* =========================================
-   2. Reset & Base Styles
-   ========================================= */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* Ensures padding doesn't affect width */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body {
-  font-family: var(--font-main);
-  background-color: var(--bg-color);
-  color: var(--text-primary);
-  line-height: 1.6;
-  /* Add some breathing room on the edges of the screen */
-  padding: 0 5%;
-  max-width: 1400px; /* Prevents site from getting too wide on huge screens */
-  margin: 0 auto;
-}
-a {
-  text-decoration: none;
-  color: var(--text-primary);
-  transition: color 0.3s ease;
-}
-a:hover {
-  color: var(--accent-color);
-}
-/* =========================================
-   3. Header & Navigation
-   ========================================= */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 0;
-  margin-bottom: 40px;
-}
-.logo h1 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  letter-spacing: -0.5px;
-}
-.logo p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-top: 5px;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-}
-nav ul li a {
-  font-weight: 500;
-  font-size: 1rem;
-}
-/* =========================================
-   4. Intro Section
-   ========================================= */
-.intro {
-  margin-bottom: 60px;
-  text-align: left;
-  max-width: 600px;
-}
-.intro h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  line-height: 1.2;
-}
-.intro p {
-  color: var(--text-secondary);
-  font-size: 1.2rem;
-}
-/* =========================================
-   5. The Image Gallery (CSS Grid)
-   ========================================= */
-.photo-grid {
-  display: grid;
-  /* Creates a responsive grid: boxes won't get smaller than 300px,
-     but will automatically fill available space */
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px; /* Space between photos */
-}
-.gallery-item {
-  position: relative;
-  overflow: hidden; /* Keeps images neatly inside their box */
-  border-radius: 8px; /* Adds soft rounded corners to images */
-  /* Adds a very subtle shadow */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  background: white;
-}
-.gallery-item img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover; /* Ensures images fill the square without stretching */
-  display: block;
-  transition: transform 0.5s ease; /* Prepares the image for a hover animation */
-}
-.gallery-item figcaption {
-  padding: 15px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  text-align: center;
-}
-/* Hover Animation: Zoom the image slightly when hovered */
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
-/* =========================================
-   6. Footer
-   ========================================= */
-footer {
-  margin-top: 100px;
-  padding: 40px 0;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-.social-links {
-  display: flex;
-  gap: 20px;
-}
-/* =========================================
-   7. Mobile Responsiveness
-   ========================================= */
-/* When the screen gets smaller than 768px (like a phone or small tablet) */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
 
-  .intro h2 {
-    font-size: 2rem;
-  }
-  footer {
-    flex-direction: column;
-    gap: 20px;
+body {
+    background: #fff9fb;
+    font-family: 'Inter', sans-serif;
+    color: #2d2a2e;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+}
+
+/* modern custom scroll */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #ffe6f0;
+}
+::-webkit-scrollbar-thumb {
+    background: #f5a3c7;
+    border-radius: 12px;
+}
+
+/* container */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* HEADER / NAV */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.8rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.logo {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #e8799b, #c4456e);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Space Grotesk', monospace;
+}
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+.nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #4a3942;
+    transition: 0.2s ease;
+    font-size: 1rem;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+}
+.nav-links a:hover, .nav-links a.active {
+    color: #c4456e;
+    border-bottom-color: #f4accc;
+}
+
+/* HERO + artist statement area */
+.hero {
+    margin: 3rem 0 4rem 0;
+}
+.hero-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: space-between;
+    align-items: center;
+}
+.hero-text {
+    flex: 1.2;
+    min-width: 280px;
+}
+.hero-text .greeting {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #e48bb0;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.hero-text h1 {
+    font-size: 3.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #251d21;
+    font-family: 'Space Grotesk', sans-serif;
+}
+.hero-text h1 span {
+    background: linear-gradient(120deg, #f5a3c7, #ee82aa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.artist-statement-card {
+    background: white;
+    border-radius: 32px;
+    padding: 1.8rem 2rem;
+    box-shadow: 0 20px 35px -12px rgba(236, 112, 139, 0.12);
+    border: 1px solid #ffdfea;
+    transition: all 0.25s;
+}
+.artist-statement-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #b83b62;
+}
+.artist-statement-card h3 i {
+    font-size: 1.6rem;
+    color: #f3a1c2;
+}
+.artist-statement-card p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: #3c2e36;
+    font-weight: 400;
+}
+.hero-media {
+    flex: 0.9;
+    min-width: 260px;
     text-align: center;
-  }
+}
+.hero-media .circle-deco {
+    background: #ffeef4;
+    border-radius: 60% 40% 50% 50% / 45% 40% 60% 55%;
+    padding: 1.2rem;
+    display: inline-block;
+}
+.placeholder-icon {
+    font-size: 8rem;
+    color: #f5c6da;
+}
+
+/* section titles */
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 3rem 0 1.8rem 0;
+    position: relative;
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.3px;
+}
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 55%;
+    height: 3px;
+    background: linear-gradient(90deg, #f7afce, #ffc0dd);
+    border-radius: 4px;
+}
+
+/* PROJECT GRID — 3 cards */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0 3rem;
+}
+.project-card {
+    background: white;
+    border-radius: 2rem;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.3s;
+    box-shadow: 0 12px 28px -8px rgba(0,0,0,0.05);
+    border: 1px solid #ffe2ef;
+}
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 38px -14px rgba(196, 69, 110, 0.2);
+    border-color: #fbc4db;
+}
+.project-img {
+    height: 220px;
+    background: #fcecf3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e06e92;
+    font-size: 3.2rem;
+    position: relative;
+    overflow: hidden;
+}
+/* individual background variations for each project card */
+.project-card:nth-child(1) .project-img {
+    background: #fae9f0;
+}
+.project-card:nth-child(2) .project-img {
+    background: #fbebf2;
+}
+.project-card:nth-child(3) .project-img {
+    background: #ffe7ef;
+}
+.project-img .mock-badge {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    padding: 8px 18px;
+    border-radius: 60px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ac3d62;
+    letter-spacing: 0.5px;
+}
+.project-info {
+    padding: 1.6rem 1.6rem 1.8rem;
+}
+.project-info h3 {
+    font-size: 1.55rem;
+    font-weight: 600;
+    margin-bottom: 0.65rem;
+    color: #2b1f25;
+}
+.project-tag {
+    display: inline-block;
+    background: #ffeef4;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #c4456e;
+    margin-bottom: 1rem;
+}
+.project-info p {
+    color: #4c3a44;
+    margin-bottom: 1.3rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.project-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: #c4456e;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+    border-bottom: 1px dashed #f0b3cf;
+}
+.project-link i {
+    font-size: 0.8rem;
+}
+.project-link:hover {
+    gap: 12px;
+    color: #a13458;
+}
+
+/* divider */
+.divider {
+    height: 2px;
+    background: linear-gradient(90deg, #ffe2ef, #ffc0dd, #ffe2ef);
+    margin: 2rem 0;
+}
+
+/* process card */
+.process-card {
+    background: #ffffffc9;
+    border-radius: 32px;
+    padding: 2rem;
+    margin: 1rem 0 2rem;
+    border: 1px solid #ffeef5;
+}
+.process-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+.process-inner h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #c84f77;
+}
+.process-inner p {
+    max-width: 500px;
+    margin-top: 0.5rem;
+}
+.process-icons i {
+    font-size: 3rem;
+    color: #f3a7c6;
+    opacity: 0.7;
+}
+.process-icons i:first-child {
+    margin-right: 1rem;
+}
+.process-icons i.fa-camera {
+    font-size: 2.5rem;
+}
+
+/* quote block */
+.quote-block {
+    text-align: center;
+    margin: 3rem 0 1.5rem;
+}
+.quote-inner {
+    background: linear-gradient(120deg, #ffffff, #fff7fa);
+    border-radius: 56px;
+    padding: 2rem 1.8rem;
+    border: 1px solid #fad2e5;
+}
+.quote-inner i.fa-quote-left {
+    font-size: 2rem;
+    color: #f0a6c6;
+    opacity: 0.6;
+}
+.quote-inner p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 1rem auto 0;
+    font-style: italic;
+    font-weight: 400;
+}
+.quote-author {
+    margin-top: 1rem;
+    font-weight: 500;
+    font-style: normal !important;
+}
+
+/* footer */
+.footer {
+    text-align: center;
+    padding: 2.8rem 0 2.5rem;
+    margin-top: 2rem;
+    color: #b27c93;
+    font-weight: 400;
+    border-top: 1px solid #ffdeea;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    margin-bottom: 1.2rem;
+}
+.social-icons a {
+    color: #dc8cad;
+    font-size: 1.5rem;
+    transition: transform 0.2s, color 0.2s;
+}
+.social-icons a:hover {
+    color: #c4456e;
+    transform: scale(1.1);
+}
+.footer-tagline {
+    font-size: 0.75rem;
+    margin-top: 0.6rem;
+}
+
+/* responsive touches */
+@media (max-width: 780px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-text h1 {
+        font-size: 2.4rem;
+    }
+    .section-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .project-img {
+        height: 180px;
+    }
+    .artist-statement-card {
+        padding: 1.3rem;
+    }
+    .quote-inner p {
+        font-size: 1rem;
+    }
 }

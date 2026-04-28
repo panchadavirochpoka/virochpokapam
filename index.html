@@ -2,63 +2,150 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The title that appears in the browser tab -->
-    <title>My Portfolio | Image Gallery</title>
-
-    <!-- Link to your CSS file for styling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Art Portfolio | Pink & White Modern Showcase</title>
+    <!-- Google Fonts: modern, clean, elegant -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="logo">
-            <h1>Pam VIrochpoka</h1>
-            <p>Designer</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#gallery">Work</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <!-- Main Content -->
-    <main>
-        <!-- Intro/Hero Section -->
-        <section id="about" class="intro">
-            <h2>Welcome to my portfolio.</h2>
-            <p>Here is a collection of my works.</p>
-        </section>
-        <!-- The Image Gallery -->
-        <section id="gallery" class="photo-grid">
 
-            <!-- Image 1 -->
-            <figure class="gallery-item">
-                <img src="images/photo1.jpg" alt="A description of the first image for accessibility">
-                <figcaption>Large Format Print</figcaption>
-            </figure>
-            <!-- Image 2 -->
-            <figure class="gallery-item">
-                <img src="images/photo2.jpg" alt="A description of the second image">
-                <figcaption>Project Name 2</figcaption>
-            </figure>
-            <!-- Image 3 -->
-            <figure class="gallery-item">
-                <img src="images/photo3.jpg" alt="A description of the third image">
-                <figcaption>Project Name 3</figcaption>
-            </figure>
-            <!-- Add as many <figure> blocks as you need! -->
-        </section>
-    </main>
-    <!-- Footer Section -->
-    <footer id="contact">
-        <p>© 2026 Panchada Virochpoka. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://instagram.com/yourusername">Instagram</a>
-            <a href="mailto:your.email@example.com">Email Me</a>
+<div class="container">
+    <!-- navigation -->
+    <nav class="navbar">
+        <div class="logo">✦ ART PORTFOLIO</div>
+        <div class="nav-links">
+            <a href="#" class="active">Work</a>
+            <a href="#">Statement</a>
+            <a href="#">Contact</a>
         </div>
+    </nav>
+
+    <!-- hero & artist statement area (integrated) -->
+    <div class="hero">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <div class="greeting">Multidisciplinary Artist</div>
+                <h1>Where vision meets <span>fragile beauty</span></h1>
+                <!-- Artist Statement card -->
+                <div class="artist-statement-card">
+                    <h3><i class="fas fa-feather-alt"></i> Artist Statement</h3>
+                    <p>My work explores the intersection of digital fabrication, organic forms, and emotional cartography. Through large format prints, 3D modeling, and video art, I create immersive narratives that question material permanence. Each project becomes a dialogue between texture, light, and memory — inviting the viewer into a soft yet bold visual universe. Pink isn't just a color; it's a state of vulnerability and power.</p>
+                </div>
+            </div>
+            <div class="hero-media">
+                <div class="circle-deco">
+                    <i class="fas fa-palette placeholder-icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS SECTION : 3 core projects -->
+    <div>
+        <h2 class="section-title">Featured projects</h2>
+        <div class="projects-grid">
+
+            <!-- 1. Large format print -->
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="mock-badge"><i class="fas fa-print"></i>  LARGE FORMAT</div>
+                </div>
+                <div class="project-info">
+                    <h3>Ephemeral Topographies</h3>
+                    <div class="project-tag">Large format print · Archival ink</div>
+                    <p>A triptych of monumental prints (150cm x 200cm) exploring organic textures, fluid geometries and layered pigments. The work evokes shifting landscapes, where digital manipulation meets traditional paper质感.</p>
+                    <a href="#" class="project-link">View project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- 2. 3D model project -->
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="mock-badge"><i class="fas fa-cube"></i>  3D MODEL</div>
+                </div>
+                <div class="project-info">
+                    <h3>Morphic Resonance</h3>
+                    <div class="project-tag">3D sculpture · Blender · Real-time</div>
+                    <p>Interactive 3D model series based on generative algorithms and biomorphic structures. Rendered in high-resolution wireframes and soft particle simulations. Exhibited as a virtual gallery and AR experience.</p>
+                    <a href="#" class="project-link">Explore 3D <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- 3. video making -->
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="mock-badge"><i class="fas fa-video"></i>  VIDEO ART</div>
+                </div>
+                <div class="project-info">
+                    <h3>Folds of Time</h3>
+                    <div class="project-tag">Short film · 4K · experimental</div>
+                    <p>A 9-minute meditative video essay weaving analogue footage, digital glitches, and hand-drawn animation. It reflects on memory loops and the fragility of perception. Selected at international film festivals.</p>
+                    <a href="#" class="project-link">Watch trailer <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- extra info about process / tools -->
+    <div class="divider"></div>
+
+    <div class="process-card">
+        <div class="process-inner">
+            <div>
+                <h3><i class="fas fa-paintbrush-fine"></i>  Creative workflow</h3>
+                <p>From initial sketches to large-format pigment prints, 3D sculpting in Blender / ZBrush and cinematic post-production in DaVinci — each piece is a unique dialogue between traditional & digital realms.</p>
+            </div>
+            <div class="process-icons">
+                <i class="fas fa-palette"></i>
+                <i class="fas fa-camera"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- second statement / additional quote block -->
+    <div class="quote-block">
+        <div class="quote-inner">
+            <i class="fas fa-quote-left"></i>
+            <p>"I build worlds that whisper. The pink monochrome, the tactile surface, the moving image — all are vessels for emotional architecture."</p>
+            <p class="quote-author">— Artist, 2025</p>
+        </div>
+    </div>
+
+    <!-- footer with social and credits -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+            <a href="#" aria-label="Vimeo"><i class="fab fa-vimeo-v"></i></a>
+            <a href="#" aria-label="Github"><i class="fab fa-github"></i></a>
+        </div>
+        <p>© 2025 · Pink Aesthetic Portfolio — All works original</p>
+        <p class="footer-tagline">✧ large format print | 3d model | video making ✧</p>
     </footer>
+</div>
+
+<!-- simple interactivity for nav smooth highlights -->
+<script>
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            if(this.innerText === 'Statement') {
+                document.querySelector('.artist-statement-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else if(this.innerText === 'Work') {
+                document.querySelector('.projects-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if(this.innerText === 'Contact') {
+                document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    console.log('🌸 Pink artist portfolio ready — showcase for large format print, 3d model, video making');
+</script>
 </body>
 </html>
