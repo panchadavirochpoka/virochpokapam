@@ -1,3 +1,4 @@
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +11,7 @@
     <style>
         /* ===== ALL PINK & WHITE STYLES ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        /* SMOOTH SCROLLING ADDED HERE */
         html { scroll-behavior: smooth; }
-
         body { background: #fff9fb; font-family: 'Inter', sans-serif; color: #2d2a2e; line-height: 1.5; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
 
@@ -43,8 +41,6 @@
         /* HERO MEDIA */
         .hero-media { flex: 0.9; text-align: center; }
         .hero-image { max-width: 100%; height: auto; border-radius: 32px; box-shadow: 0 20px 40px -10px rgba(196, 69, 110, 0.2); }
-
-        /* THIS IS THE BLINKING PLACEHOLDER STYLE */
         .image-placeholder { border: 4px dashed #c4456e; background: #ffeef4; padding: 4rem 2rem; border-radius: 32px; text-align: center; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(196, 69, 110, 0.4); } 70% { box-shadow: 0 0 0 20px rgba(196, 69, 110, 0); } 100% { box-shadow: 0 0 0 0 rgba(196, 69, 110, 0); } }
 
@@ -53,8 +49,10 @@
         .section-title { font-size: 2rem; font-weight: 600; margin: 3rem 0 1.8rem; position: relative; display: inline-block; font-family: 'Space Grotesk', sans-serif; }
         .section-title:after { content: ''; position: absolute; bottom: -10px; left: 0; width: 55%; height: 3px; background: linear-gradient(90deg, #f7afce, #ffc0dd); border-radius: 4px; }
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin: 2rem 0 3rem; }
-        .project-card { background: white; border-radius: 2rem; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.3s; box-shadow: 0 12px 28px -8px rgba(0,0,0,0.05); border: 1px solid #ffe2ef; }
+
+        .project-card { display: block; text-decoration: none; color: inherit; background: white; border-radius: 2rem; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.3s; box-shadow: 0 12px 28px -8px rgba(0,0,0,0.05); border: 1px solid #ffe2ef; cursor: pointer; }
         .project-card:hover { transform: translateY(-8px); box-shadow: 0 28px 38px -14px rgba(196, 69, 110, 0.25); border-color: #fbc4db; }
+
         .project-img { height: 220px; display: flex; align-items: center; justify-content: center; font-size: 3.2rem; background-size: cover; background-position: center; }
         .project-card:nth-child(1) .project-img { background-color: #fae9f0; }
         .project-card:nth-child(2) .project-img { background-color: #fbebf2; }
@@ -64,8 +62,65 @@
         .project-info h3 { font-size: 1.55rem; font-weight: 600; color: #2b1f25; margin-bottom: 0.65rem; }
         .project-tag { display: inline-block; background: #ffeef4; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #c4456e; margin-bottom: 1rem; }
         .project-info p { color: #4c3a44; margin-bottom: 1.3rem; font-size: 0.95rem; }
-        .project-link { text-decoration: none; font-weight: 600; color: #c4456e; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.2s; }
-        .project-link:hover { gap: 12px; color: #a13458; }
+        .project-link-text { font-weight: 600; color: #c4456e; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.2s; }
+        .project-card:hover .project-link-text { gap: 12px; color: #a13458; }
+
+        /* =========================================================
+           MODAL (POPUP) STYLES
+           ========================================================= */
+        .modal-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(45, 42, 46, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* This magic line makes the popup appear when you click the card */
+        .modal-overlay:target {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: #fff9fb;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 32px;
+            padding: 3rem;
+            position: relative;
+            border: 2px solid #ffdfea;
+            box-shadow: 0 25px 50px -12px rgba(196, 69, 110, 0.25);
+            animation: slideUp 0.4s ease forwards;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(40px); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem; right: 2rem;
+            font-size: 2.5rem;
+            color: #e8799b;
+            text-decoration: none;
+            transition: 0.2s;
+            line-height: 1;
+        }
+        .modal-close:hover { color: #c4456e; transform: scale(1.1); }
+
+        .modal-body h2 { font-size: 2.5rem; color: #251d21; margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif; }
+        .modal-body .project-tag { margin-bottom: 2rem; }
+        .modal-image-placeholder { background: #ffeef4; height: 350px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #f5c6da; font-size: 4rem; margin-bottom: 2rem; border: 2px dashed #f4accc; }
+        .modal-body p { font-size: 1.1rem; color: #3c2e36; line-height: 1.8; margin-bottom: 1.5rem; }
 
         /* PROCESS & QUOTE */
         .process-card { background: white; border-radius: 32px; padding: 2rem; margin: 1rem 0 2rem; border: 1px solid #ffeef5; }
@@ -86,7 +141,7 @@
         .social-icons a { color: #dc8cad; font-size: 1.5rem; transition: transform 0.2s; }
         .social-icons a:hover { color: #c4456e; transform: scale(1.1); }
 
-        @media (max-width: 780px) { .container { padding: 0 1.5rem; } .navbar { flex-direction: column; } .hero-text h1 { font-size: 2.4rem; } .section-title { font-size: 1.75rem; } }
+        @media (max-width: 780px) { .container { padding: 0 1.5rem; } .navbar { flex-direction: column; } .hero-text h1 { font-size: 2.4rem; } .section-title { font-size: 1.75rem; } .modal-content { padding: 2rem; } }
     </style>
 </head>
 <body>
@@ -118,14 +173,15 @@
                     <h2 style="color: #c4456e; margin-bottom: 1rem;">YOUR IMAGE GOES HERE</h2>
                     <p style="color: #b83b62;">Delete this dashed box in your HTML and replace it with:<br><br><code>&lt;img src="YOUR-PICTURE-NAME.jpg" class="hero-image"&gt;</code></p>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 
     <div id="work" class="work-section">
         <h2 class="section-title">Featured projects</h2>
         <div class="projects-grid">
-            <div class="project-card">
+
+            <a href="#project-1-popup" class="project-card">
                 <div class="project-img">
                     <div class="mock-badge"><i class="fas fa-print"></i> LARGE FORMAT</div>
                 </div>
@@ -133,10 +189,11 @@
                     <h3>Ephemeral Topographies</h3>
                     <div class="project-tag">Large format print · Archival ink</div>
                     <p>A triptych of monumental prints (150cm x 200cm) exploring organic textures, fluid geometries and layered pigments.</p>
-                    <a href="#" class="project-link">View project <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-link-text">Read more <i class="fas fa-arrow-right"></i></div>
                 </div>
-            </div>
-            <div class="project-card">
+            </a>
+
+            <a href="#project-2-popup" class="project-card">
                 <div class="project-img">
                     <div class="mock-badge"><i class="fas fa-cube"></i> 3D MODEL</div>
                 </div>
@@ -144,10 +201,11 @@
                     <h3>Morphic Resonance</h3>
                     <div class="project-tag">3D sculpture · Blender · Real-time</div>
                     <p>Interactive 3D model series based on generative algorithms and biomorphic structures. Rendered in high-resolution wireframes.</p>
-                    <a href="#" class="project-link">Explore 3D <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-link-text">Read more <i class="fas fa-arrow-right"></i></div>
                 </div>
-            </div>
-            <div class="project-card">
+            </a>
+
+            <a href="#project-3-popup" class="project-card">
                 <div class="project-img">
                     <div class="mock-badge"><i class="fas fa-video"></i> VIDEO ART</div>
                 </div>
@@ -155,9 +213,10 @@
                     <h3>Folds of Time</h3>
                     <div class="project-tag">Short film · 4K · experimental</div>
                     <p>A 9-minute meditative video essay weaving analogue footage, digital glitches, and hand-drawn animation.</p>
-                    <a href="#" class="project-link">Watch trailer <i class="fas fa-arrow-right"></i></a>
+                    <div class="project-link-text">Read more <i class="fas fa-arrow-right"></i></div>
                 </div>
-            </div>
+            </a>
+
         </div>
     </div>
 
@@ -194,6 +253,58 @@
         <p>© 2025 · Pink Aesthetic Portfolio — All works original</p>
         <p style="font-size: 0.75rem; margin-top: 0.6rem;">✧ large format print | 3d model | video making ✧</p>
     </footer>
+</div>
+
+
+<div id="project-1-popup" class="modal-overlay">
+    <div class="modal-content">
+        <a href="#work" class="modal-close">&times;</a>
+        <div class="modal-body">
+            <h2>Ephemeral Topographies</h2>
+            <div class="project-tag">Large format print · Archival ink</div>
+
+            <div class="modal-image-placeholder">
+                <i class="fas fa-image"></i>
+            </div>
+
+            <p>Here is where you can type out the full story of your first project. Talk about your inspiration, the materials you used, and the challenges you faced while creating this large format print. You can replace the placeholder icon above with another image tag if you want to show a high-res version of the artwork!</p>
+            <p><strong>Exhibited at:</strong> The Modern Gallery, 2024</p>
+        </div>
+    </div>
+</div>
+
+<div id="project-2-popup" class="modal-overlay">
+    <div class="modal-content">
+        <a href="#work" class="modal-close">&times;</a>
+        <div class="modal-body">
+            <h2>Morphic Resonance</h2>
+            <div class="project-tag">3D sculpture · Blender · Real-time</div>
+
+            <div class="modal-image-placeholder">
+                <i class="fas fa-cube"></i>
+            </div>
+
+            <p>Detail your 3D modeling process here. Discuss the algorithms used, the rendering engine, and the biomorphic structures that inspired this piece. This is a great place to link to an interactive 3D viewer or embed a video of the model spinning.</p>
+            <p><strong>Software:</strong> Blender, Substance Painter</p>
+        </div>
+    </div>
+</div>
+
+<div id="project-3-popup" class="modal-overlay">
+    <div class="modal-content">
+        <a href="#work" class="modal-close">&times;</a>
+        <div class="modal-body">
+            <h2>Folds of Time</h2>
+            <div class="project-tag">Short film · 4K · experimental</div>
+
+            <div class="modal-image-placeholder">
+                <i class="fas fa-video"></i>
+            </div>
+
+            <p>Explain the narrative and experimental techniques used in your short film. You can talk about your camera setup, the editing process, and the themes of memory and time. Instead of an image, you could easily drop a YouTube or Vimeo embed code right here in the future!</p>
+            <p><strong>Duration:</strong> 9 minutes, 14 seconds</p>
+        </div>
+    </div>
 </div>
 
 </body>
