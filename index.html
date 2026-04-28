@@ -1,3 +1,12 @@
+I have updated the unified code.
+
+I removed the pink circle icon and replaced it with a massive, flashing, dashed pink box that literally says **"YOUR IMAGE GOES HERE."** It will be impossible to miss when you open the file.
+
+I also added giant arrow comments `` in the HTML code itself so you can easily spot where to type your file name.
+
+Copy this entire block, replace everything in your `index.html` file with it, and open it in your browser:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +16,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== ALL PINK & WHITE STYLES ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff9fb; font-family: 'Inter', sans-serif; color: #2d2a2e; line-height: 1.5; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+
+        /* NAVBAR */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 0; flex-wrap: wrap; gap: 1rem; }
+        .logo { font-size: 1.8rem; font-weight: 600; background: linear-gradient(135deg, #e8799b, #c4456e); -webkit-background-clip: text; color: transparent; font-family: 'Space Grotesk', monospace; }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: #4a3942; transition: 0.2s; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+        .nav-links a:hover, .nav-links a.active { color: #c4456e; border-bottom-color: #f4accc; }
+
+        /* HERO SECTION */
+        .hero { margin: 3rem 0 4rem; }
+        .hero-grid { display: flex; flex-wrap: wrap; gap: 3rem; align-items: center; }
+        .hero-text { flex: 1.2; min-width: 280px; }
+        .greeting { font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; color: #e48bb0; font-weight: 500; margin-bottom: 1rem; }
+        .hero-text h1 { font-size: 3.3rem; font-weight: 700; margin-bottom: 1.5rem; color: #251d21; font-family: 'Space Grotesk', sans-serif; }
+        .hero-text h1 span { background: linear-gradient(120deg, #f5a3c7, #ee82aa); -webkit-background-clip: text; color: transparent; }
+
+        /* STATEMENT CARD */
+        .artist-statement-card { background: white; border-radius: 32px; padding: 1.8rem 2rem; box-shadow: 0 20px 35px -12px rgba(236, 112, 139, 0.15); border: 1px solid #ffdfea; }
+        .artist-statement-card h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; color: #b83b62; }
+        .artist-statement-card h3 i { font-size: 1.6rem; color: #f3a1c2; }
+        .artist-statement-card p { font-size: 1.05rem; line-height: 1.55; color: #3c2e36; }
+
+        /* HERO MEDIA */
+        .hero-media { flex: 0.9; text-align: center; }
+        .hero-image { max-width: 100%; height: auto; border-radius: 32px; box-shadow: 0 20px 40px -10px rgba(196, 69, 110, 0.2); }
+
+        /* THIS IS THE BLINKING PLACEHOLDER STYLE */
+        .image-placeholder { border: 4px dashed #c4456e; background: #ffeef4; padding: 4rem 2rem; border-radius: 32px; text-align: center; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(196, 69, 110, 0.4); } 70% { box-shadow: 0 0 0 20px rgba(196, 69, 110, 0); } 100% { box-shadow: 0 0 0 0 rgba(196, 69, 110, 0); } }
+
+        /* PROJECTS */
+        .section-title { font-size: 2rem; font-weight: 600; margin: 3rem 0 1.8rem; position: relative; display: inline-block; font-family: 'Space Grotesk', sans-serif; }
+        .section-title:after { content: ''; position: absolute; bottom: -10px; left: 0; width: 55%; height: 3px; background: linear-gradient(90deg, #f7afce, #ffc0dd); border-radius: 4px; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin: 2rem 0 3rem; }
+        .project-card { background: white; border-radius: 2rem; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.3s; box-shadow: 0 12px 28px -8px rgba(0,0,0,0.05); border: 1px solid #ffe2ef; }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 28px 38px -14px rgba(196, 69, 110, 0.25); border-color: #fbc4db; }
+        .project-img { height: 220px; display: flex; align-items: center; justify-content: center; font-size: 3.2rem; background-size: cover; background-position: center; }
+        .project-card:nth-child(1) .project-img { background-color: #fae9f0; }
+        .project-card:nth-child(2) .project-img { background-color: #fbebf2; }
+        .project-card:nth-child(3) .project-img { background-color: #ffe7ef; }
+        .mock-badge { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); padding: 8px 18px; border-radius: 60px; font-size: 0.85rem; font-weight: 600; color: #ac3d62; }
+        .project-info { padding: 1.6rem; }
+        .project-info h3 { font-size: 1.55rem; font-weight: 600; color: #2b1f25; margin-bottom: 0.65rem; }
+        .project-tag { display: inline-block; background: #ffeef4; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #c4456e; margin-bottom: 1rem; }
+        .project-info p { color: #4c3a44; margin-bottom: 1.3rem; font-size: 0.95rem; }
+        .project-link { text-decoration: none; font-weight: 600; color: #c4456e; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.2s; }
+        .project-link:hover { gap: 12px; color: #a13458; }
+
+        /* PROCESS & QUOTE */
+        .process-card { background: white; border-radius: 32px; padding: 2rem; margin: 1rem 0 2rem; border: 1px solid #ffeef5; }
+        .process-inner { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: center; }
+        .process-inner h3 { font-size: 1.5rem; font-weight: 500; color: #c84f77; }
+        .process-icons i { font-size: 3rem; color: #f3a7c6; }
+        .process-icons i:first-child { margin-right: 1rem; }
+        .quote-block { text-align: center; margin: 3rem 0 1.5rem; }
+        .quote-inner { background: linear-gradient(120deg, #ffffff, #fff7fa); border-radius: 56px; padding: 2rem; border: 1px solid #fad2e5; }
+        .quote-inner i { font-size: 2rem; color: #f0a6c6; }
+        .quote-inner p { font-size: 1.2rem; max-width: 700px; margin: 1rem auto 0; font-style: italic; }
+        .quote-author { margin-top: 1rem; font-weight: 500; font-style: normal; }
+
+        /* FOOTER */
+        .divider { height: 2px; background: linear-gradient(90deg, #ffe2ef, #ffc0dd, #ffe2ef); margin: 2rem 0; }
+        .footer { text-align: center; padding: 2.8rem 0; margin-top: 2rem; color: #b27c93; border-top: 1px solid #ffdeea; }
+        .social-icons { display: flex; justify-content: center; gap: 1.8rem; margin-bottom: 1.2rem; }
+        .social-icons a { color: #dc8cad; font-size: 1.5rem; transition: transform 0.2s; }
+        .social-icons a:hover { color: #c4456e; transform: scale(1.1); }
+
+        @media (max-width: 780px) { .container { padding: 0 1.5rem; } .navbar { flex-direction: column; } .hero-text h1 { font-size: 2.4rem; } .section-title { font-size: 1.75rem; } }
+    </style>
 </head>
 <body>
 
@@ -31,11 +113,14 @@
                     <p>My work explores the intersection of digital fabrication, organic forms, and emotional cartography. Through large format prints, 3D modeling, and video art, I create immersive narratives that question material permanence. Each project becomes a dialogue between texture, light, and memory — inviting the viewer into a soft yet bold visual universe. Pink isn't just a color; it's a state of vulnerability and power.</p>
                 </div>
             </div>
+
             <div class="hero-media">
-                <div class="circle-deco">
-                    <i class="fas fa-palette placeholder-icon"></i>
+
+                <div class="image-placeholder">
+                    <h2 style="color: #c4456e; margin-bottom: 1rem;">YOUR IMAGE GOES HERE</h2>
+                    <p style="color: #b83b62;">Delete this dashed box in your HTML and replace it with:<br><br><code>&lt;img src="YOUR-PICTURE-NAME.jpg" class="hero-image"&gt;</code></p>
                 </div>
-            </div>
+                </div>
         </div>
     </div>
 
@@ -115,3 +200,4 @@
 
 </body>
 </html>
+```
