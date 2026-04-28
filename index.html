@@ -8,144 +8,324 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* ===== ALL PINK & WHITE STYLES ===== */
+        /* ===== GLOBAL STYLES ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { background: #fff9fb; font-family: 'Inter', sans-serif; color: #2d2a2e; line-height: 1.6; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        body { background: #fff9fb; font-family: 'Inter', sans-serif; color: #2d2a2e; line-height: 1.6; overflow-x: hidden; cursor: default; }
+        a, button { cursor: pointer; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
 
-        /* NAVBAR - Frosted Glass Effect */
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; background: rgba(255, 249, 251, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(255, 223, 234, 0.5); }
+        /* AMBIENT BACKGROUND */
+        .ambient-shape { position: fixed; border-radius: 50%; filter: blur(60px); z-index: 0; animation: float 15s infinite ease-in-out alternate; opacity: 0.6; pointer-events: none; }
+        .shape-1 { width: 300px; height: 300px; background: #ffe2ef; top: -100px; left: -100px; }
+        .shape-2 { width: 400px; height: 400px; background: #fff0f5; bottom: -100px; right: -100px; animation-delay: -5s; }
+        .shape-3 { width: 250px; height: 250px; background: #fbebf2; top: 40%; left: 60%; animation-delay: -10s; }
+        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, 50px) scale(1.1); } }
+
+        /* CURSOR */
+        .cursor-follower { position: fixed; width: 30px; height: 30px; border: 2px solid #f4accc; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background 0.2s; transition-timing-function: ease-out; }
+        .cursor-follower.hovering { width: 50px; height: 50px; background: rgba(244, 172, 204, 0.2); border-color: #c4456e; }
+
+        /* NAVBAR */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; background: rgba(255, 249, 251, 0.85); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(255, 223, 234, 0.5); }
         .logo { font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, #e8799b, #c4456e); -webkit-background-clip: text; color: transparent; font-family: 'Space Grotesk', monospace; letter-spacing: 1px; }
         .nav-links { display: flex; gap: 2.5rem; }
         .nav-links a { text-decoration: none; font-weight: 500; color: #5a4651; transition: all 0.3s ease; padding-bottom: 4px; border-bottom: 2px solid transparent; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
-        .nav-links a i { font-size: 0.85rem; color: #d86a92; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: #c4456e; border-bottom-color: #f4accc; }
-        .nav-links a:hover i { color: #c4456e; transform: translateY(-2px); }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero { margin: 4rem 0 6rem; scroll-margin-top: 100px; }
         .hero-grid { display: flex; flex-wrap: wrap; gap: 4rem; align-items: center; }
-        .hero-text { flex: 1.2; min-width: 300px; }
-        .greeting { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 4px; color: #d86a92; font-weight: 600; margin-bottom: 1.2rem; }
-        .hero-text h1 { font-size: 3.8rem; font-weight: 700; margin-bottom: 1.8rem; color: #1a1518; font-family: 'Space Grotesk', sans-serif; line-height: 1.1; letter-spacing: -1px; }
-        .hero-text h1 span { background: linear-gradient(120deg, #f5a3c7, #d45d85); -webkit-background-clip: text; color: transparent; }
+        .hero-text h1 { font-size: 3.8rem; font-weight: 700; margin-bottom: 1.8rem; color: #1a1518; font-family: 'Space Grotesk', sans-serif; line-height: 1.1; }
+        .typewriter-text { background: linear-gradient(120deg, #f5a3c7, #d45d85); -webkit-background-clip: text; color: transparent; border-right: 3px solid #c4456e; padding-right: 5px; animation: blink 0.75s step-end infinite; }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: #c4456e; } }
 
-        /* STATEMENT CARD */
-        .artist-statement-card { background: white; border-radius: 24px; padding: 2rem 2.5rem; box-shadow: 0 20px 40px -15px rgba(236, 112, 139, 0.12); border: 1px solid #ffdfea; scroll-margin-top: 120px; transition: transform 0.3s ease; }
-        .artist-statement-card:hover { transform: translateY(-5px); }
-        .artist-statement-card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 12px; color: #b83b62; font-family: 'Space Grotesk', sans-serif; }
-        .artist-statement-card h3 i { font-size: 1.4rem; color: #f3a1c2; }
-        .artist-statement-card p { font-size: 1.05rem; line-height: 1.7; color: #4a3942; }
+        .artist-statement-card { background: white; border-radius: 24px; padding: 2rem 2.5rem; box-shadow: 0 20px 40px -15px rgba(236, 112, 139, 0.12); border: 1px solid #ffdfea; transition: transform 0.3s ease; }
+        .hero-image { width: 100%; height: 500px; object-fit: cover; border-radius: 32px; box-shadow: 0 30px 60px -20px rgba(196, 69, 110, 0.3); }
 
-        /* HERO MEDIA (REAL IMAGE) */
-        .hero-media { flex: 0.9; text-align: center; position: relative; }
-        .hero-image { width: 100%; height: 500px; object-fit: cover; border-radius: 32px; box-shadow: 0 30px 60px -20px rgba(196, 69, 110, 0.3); transition: transform 0.5s ease; }
-        .hero-media:hover .hero-image { transform: scale(1.02) rotate(1deg); }
-
-        /* PROJECTS SECTION */
+        /* PROJECTS */
         .work-section { scroll-margin-top: 100px; }
-        .section-title { font-size: 2.2rem; font-weight: 700; margin: 3rem 0 2.5rem; position: relative; display: inline-block; font-family: 'Space Grotesk', sans-serif; color: #1a1518; }
+        .section-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; margin: 3rem 0 2rem; gap: 1rem; }
+        .section-title { font-size: 2.2rem; font-weight: 700; position: relative; font-family: 'Space Grotesk', sans-serif; }
         .section-title:after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60%; height: 4px; background: linear-gradient(90deg, #f7afce, #ffc0dd); border-radius: 4px; }
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; margin: 2rem 0 4rem; }
 
-        /* CLICKABLE CARDS */
-        .project-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: white; border-radius: 24px; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08); border: 1px solid #ffe2ef; cursor: pointer; height: 100%; }
-        .project-card:hover { transform: translateY(-12px); box-shadow: 0 30px 50px -15px rgba(196, 69, 110, 0.25); border-color: #fbc4db; }
+        .filter-btn { background: transparent; border: 2px solid #ffdfea; color: #b83b62; padding: 8px 20px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; margin-right: 5px; }
+        .filter-btn.active { background: #c4456e; border-color: #c4456e; color: white; }
 
-        /* REAL PROJECT IMAGES */
-        .project-img { height: 260px; display: flex; align-items: flex-start; justify-content: flex-end; padding: 1.5rem; background-size: cover; background-position: center; transition: transform 0.5s ease; }
-        .project-card:hover .project-img { transform: scale(1.05); }
-        .img-wrapper { overflow: hidden; height: 260px; } /* Keeps the zoom effect inside the box */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
+        .project-card { background: white; border-radius: 24px; overflow: hidden; border: 1px solid #ffe2ef; transition: all 0.4s ease; text-decoration: none; color: inherit; }
+        .project-card:hover { transform: translateY(-12px); box-shadow: 0 30px 50px -15px rgba(196, 69, 110, 0.25); }
+        .project-img { height: 260px; background-size: cover; background-position: center; position: relative; }
+        .img-overlay { position: absolute; inset: 0; background: rgba(196, 69, 110, 0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; }
+        .project-card:hover .img-overlay { opacity: 1; }
 
-        /* Unsplash Placeholder Images */
-        .project-card:nth-child(1) .project-img { background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop'); }
-        .project-card:nth-child(2) .project-img { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop'); }
-        .project-card:nth-child(3) .project-img { background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop'); }
+        /* DOODLE TOOL */
+        .process-card { background: white; border-radius: 32px; padding: 3rem; margin: 4rem 0; border: 1px solid #ffeef5; box-shadow: 0 15px 35px -10px rgba(236, 112, 139, 0.08); }
+        #doodleCanvas { width: 100%; height: 250px; border: 3px dashed #ffc0dd; border-radius: 20px; background: #fffcfd; cursor: crosshair; }
+        .canvas-btn { background: #ffeef4; border: 1px solid #f4accc; color: #c4456e; padding: 8px 20px; border-radius: 50px; margin-top: 15px; }
 
-        .mock-badge { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); padding: 8px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; color: #a13458; box-shadow: 0 4px 15px rgba(0,0,0,0.1); letter-spacing: 1px; }
+        /* CONTACT FORM SECTION */
+        .contact-section { padding: 4rem 0; scroll-margin-top: 100px; }
+        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center; }
 
-        .project-info { padding: 2rem; background: white; flex-grow: 1; display: flex; flex-direction: column; position: relative; z-index: 2; }
-        .project-info h3 { font-size: 1.6rem; font-weight: 600; color: #1a1518; margin-bottom: 0.8rem; font-family: 'Space Grotesk', sans-serif; }
-        .project-tag { display: inline-block; background: #fff0f5; padding: 6px 14px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: #c4456e; margin-bottom: 1.2rem; align-self: flex-start; }
-        .project-info p { color: #5a4651; margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; flex-grow: 1; }
-        .project-link-text { font-weight: 600; color: #c4456e; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; font-size: 1.05rem; }
-        .project-card:hover .project-link-text { gap: 14px; color: #9c2e50; }
+        .contact-info-box h2 { font-size: 2.5rem; font-family: 'Space Grotesk'; color: #1a1518; margin-bottom: 1.5rem; }
+        .contact-info-box p { font-size: 1.1rem; color: #5a4651; margin-bottom: 2rem; }
+        .contact-method { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; color: #b83b62; font-weight: 600; }
+        .contact-method i { width: 45px; height: 45px; background: #ffeef4; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
 
-        /* =========================================================
-           PRO UX: MODAL (POPUP) STYLES
-           ========================================================= */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26, 21, 24, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
-        .modal-overlay:target { display: flex; opacity: 1; }
+        .contact-form-wrapper { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px); padding: 3rem; border-radius: 32px; border: 1px solid #ffdfea; box-shadow: 0 20px 40px rgba(196, 69, 110, 0.05); position: relative; overflow: hidden; }
 
-        .modal-content { background: #fff9fb; width: 90%; max-width: 900px; max-height: 85vh; overflow-y: auto; border-radius: 24px; padding: 3rem; position: relative; border: 1px solid #ffdfea; box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.3); animation: slideUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
-        @keyframes slideUp { from { transform: translateY(60px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+        .form-group { position: relative; margin-bottom: 25px; }
+        .form-input { width: 100%; padding: 12px 15px; background: rgba(255, 255, 255, 0.8); border: 2px solid #ffdfea; border-radius: 12px; font-family: 'Inter'; font-size: 1rem; outline: none; transition: 0.3s; color: #2d2a2e; }
+        .form-input:focus { border-color: #c4456e; background: white; }
 
-        .modal-close { position: absolute; top: 2rem; right: 2.5rem; font-size: 2rem; color: #c4456e; text-decoration: none; transition: all 0.2s; background: #ffeef4; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .modal-close:hover { background: #c4456e; color: white; transform: rotate(90deg); }
+        .form-label { position: absolute; left: 15px; top: 12px; color: #a18a95; pointer-events: none; transition: 0.3s; }
+        .form-input:focus + .form-label, .form-input:not(:placeholder-shown) + .form-label { top: -22px; left: 5px; font-size: 0.85rem; color: #c4456e; font-weight: 700; }
 
-        .modal-body h2 { font-size: 2.8rem; color: #1a1518; margin-bottom: 0.8rem; font-family: 'Space Grotesk', sans-serif; letter-spacing: -1px; }
-        .modal-body .project-tag { margin-bottom: 2rem; font-size: 0.9rem; padding: 8px 18px; }
-        .modal-image { width: 100%; height: 450px; object-fit: cover; border-radius: 16px; margin-bottom: 2.5rem; box-shadow: 0 15px 35px -10px rgba(196, 69, 110, 0.2); }
-        .modal-body p { font-size: 1.15rem; color: #4a3942; line-height: 1.8; margin-bottom: 1.5rem; }
+        .submit-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #e8799b, #c4456e); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(196, 69, 110, 0.3); }
 
-        /* PROCESS & QUOTE */
-        .process-card { background: linear-gradient(145deg, #ffffff, #fffafc); border-radius: 32px; padding: 3rem; margin: 2rem 0 4rem; border: 1px solid #ffeef5; box-shadow: 0 15px 35px -10px rgba(236, 112, 139, 0.08); }
-        .process-inner { display: flex; flex-wrap: wrap; gap: 3rem; justify-content: space-between; align-items: center; }
-        .process-inner h3 { font-size: 1.8rem; font-weight: 600; color: #b83b62; margin-bottom: 1rem; font-family: 'Space Grotesk', sans-serif; }
-        .process-icons i { font-size: 3.5rem; color: #f4accc; transition: transform 0.3s; cursor: pointer; }
-        .process-icons i:hover { transform: translateY(-5px) scale(1.1); color: #c4456e; }
-        .process-icons i:first-child { margin-right: 1.5rem; }
+        /* SUCCESS MESSAGE */
+        #successMessage { display: none; text-align: center; padding: 2rem; }
+        #successMessage i { font-size: 4rem; color: #c4456e; margin-bottom: 1rem; animation: heartbeat 1.5s infinite; }
+        @keyframes heartbeat { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
 
-        .quote-block { text-align: center; margin: 5rem 0 3rem; }
-        .quote-inner { display: inline-block; padding: 0 2rem; }
-        .quote-inner i { font-size: 2.5rem; color: #f4accc; margin-bottom: 1.5rem; opacity: 0.5; }
-        .quote-inner p { font-size: 1.5rem; max-width: 800px; margin: 0 auto; font-style: italic; color: #1a1518; font-family: 'Space Grotesk', sans-serif; line-height: 1.6; }
-        .quote-author { margin-top: 1.5rem; font-weight: 600; font-style: normal; color: #d86a92; font-size: 1.1rem; letter-spacing: 1px; }
+        /* FOOTER */
+        .footer { text-align: center; padding: 4rem 0; border-top: 1px solid #ffdfea; }
+        .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .social-icons a { width: 50px; height: 50px; background: white; border: 1px solid #ffdfea; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d86a92; text-decoration: none; transition: 0.3s; }
+        .social-icons a:hover { background: #c4456e; color: white; transform: translateY(-5px); }
 
-        /* FOOTER / CONTACT */
-        .divider { height: 1px; background: linear-gradient(90deg, transparent, #ffc0dd, transparent); margin: 4rem 0; }
-        .footer { text-align: center; padding: 0 0 3rem; color: #7a636e; }
-        .social-icons { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
-        .social-icons a { color: #d86a92; font-size: 1.8rem; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); background: white; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 10px 20px -5px rgba(236, 112, 139, 0.15); border: 1px solid #ffdfea; }
-        .social-icons a:hover { color: white; background: #c4456e; transform: translateY(-8px); border-color: #c4456e; box-shadow: 0 15px 25px -5px rgba(196, 69, 110, 0.4); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 780px) { .container { padding: 0 1.5rem; } .navbar { flex-direction: column; gap: 1.5rem; } .hero-text h1 { font-size: 2.8rem; } .hero-image { height: 350px; } .modal-content { padding: 2rem; width: 95%; } .modal-body h2 { font-size: 2rem; } .modal-image { height: 250px; } }
+        @media (max-width: 780px) { .navbar { flex-direction: column; } .hero-text h1 { font-size: 2.8rem; } .contact-form-wrapper { padding: 2rem; } }
     </style>
 </head>
 <body>
 
+<div class="ambient-shape shape-1"></div>
+<div class="ambient-shape shape-2"></div>
+<div class="ambient-shape shape-3"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
 <div class="container">
     <nav class="navbar">
-        <div class="logo">✦ Pam's ART PORTFOLIO</div>
+        <div class="logo">✦ ART PORTFOLIO</div>
         <div class="nav-links">
-            <a href="#work" class="active"><i class="fas fa-layer-group"></i> Work</a>
-            <a href="#statement"><i class="fas fa-feather-alt"></i> Statement</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="#work" class="active" data-hover>Work</a>
+            <a href="#statement" data-hover>Statement</a>
+            <a href="#contact" data-hover>Contact</a>
         </div>
     </nav>
 
     <div class="hero">
         <div class="hero-grid">
-            <div class="hero-text">
+            <div class="hero-text reveal active">
                 <div class="greeting">Multidisciplinary Artist</div>
-                <h1>Where creativity meets<br><span>excellent beauty</span></h1>
-
+                <h1>Where vision meets<br><span class="typewriter-text" id="typewriter">excellent beauty</span></h1>
                 <div class="artist-statement-card" id="statement">
                     <h3><i class="fas fa-feather-alt"></i> Artist Statement</h3>
-                    <p>My work explores the intersection of digital fabrication, organic forms, and emotional cartography. Through large format prints, 3D modeling, and video art, I create immersive narratives that question material permanence. Each project becomes a dialogue between texture, light, and memory — inviting the viewer into a soft yet bold visual universe. Pink isn't just a color; it's a state of vulnerability and power.</p>
+                    <p>My work explores the intersection of digital fabrication, organic forms, and emotional cartography. Through large format prints, 3D modeling, and video art, I create immersive narratives that question material permanence. Pink isn't just a color; it's a state of vulnerability and power.</p>
                 </div>
             </div>
-
-            <div class="hero-media">
-                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" alt="Abstract fluid art" class="hero-image">
+            <div class="hero-media reveal active">
+                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" class="hero-image">
             </div>
         </div>
     </div>
 
     <div id="work" class="work-section">
-        <h2 class="section-title">Featured projects</h2>
+        <div class="section-header reveal">
+            <h2 class="section-title">Featured projects</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="print">Print</button>
+                <button class="filter-btn" data-filter="3d">3D</button>
+            </div>
+        </div>
         <div class="projects-grid">
+            <a href="#popup1" class="project-card reveal" data-category="print">
+                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800')">
+                    <div class="img-overlay"><i class="fas fa-eye"></i></div>
+                </div>
+                <div class="project-info">
+                    <h3>Ephemeral Topographies</h3>
+                    <div class="project-tag">Print</div>
+                    <p>Monumental archival ink prints exploring organic layered pigments.</p>
+                </div>
+            </a>
+            <a href="#popup2" class="project-card reveal" data-category="3d">
+                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800')">
+                    <div class="img-overlay"><i class="fas fa-eye"></i></div>
+                </div>
+                <div class="project-info">
+                    <h3>Morphic Resonance</h3>
+                    <div class="project-tag">3D</div>
+                    <p>Procedural sculptures modeled in Blender with real-time shading.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="process-card reveal">
+        <h3><i class="fas fa-paint-brush"></i> Interactive Doodle Space</h3>
+        <p>Sketch your thoughts below before you reach out!</p>
+        <canvas id="doodleCanvas"></canvas>
+        <button id="clearCanvas" class="canvas-btn"><i class="fas fa-eraser"></i> Reset Canvas</button>
+    </div>
+
+    <section id="contact" class="contact-section reveal">
+        <div class="contact-container">
+            <div class="contact-info-box">
+                <h2>Let's create something <span>extraordinary</span>.</h2>
+                <p>I am currently open for commissions, gallery exhibitions, and creative collaborations. Drop me a line and I'll get back to you within 24 hours.</p>
+
+                <div class="contact-method">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>hello@artportfolio.com</span>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-location-dot"></i>
+                    <span>Studio 402, Arts District</span>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <form id="contactForm">
+                    <input type="text" name="_honey" style="display:none">
+
+                    <div class="form-group">
+                        <input type="text" id="name" class="form-input" placeholder=" " required>
+                        <label for="name" class="form-label">Full Name</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-input" placeholder=" " required>
+                        <label for="email" class="form-label">Email Address</label>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="message" class="form-input" rows="5" placeholder=" " required style="resize: none;"></textarea>
+                        <label for="message" class="form-label">Your Message</label>
+                    </div>
+
+                    <button type="submit" class="submit-btn" data-hover>
+                        <span>Send Message</span>
+                        <i class="fas fa-long-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div id="successMessage">
+                    <i class="fas fa-heart"></i>
+                    <h3>Message Sent!</h3>
+                    <p>Thank you for reaching out. I'll be in touch soon!</p>
+                    <button class="canvas-btn" onclick="location.reload()" style="margin-top: 1rem;">Send another</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-behance"></i></a>
+            <a href="#"><i class="fab fa-vimeo-v"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>© 2026 · Digital Art Studio · Original Works Only</p>
+    </footer>
+</div>
+
+<script>
+    // 1. CURSOR
+    const cursor = document.getElementById('cursorFollower');
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, input, textarea').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+
+    // 2. TYPEWRITER
+    const words = ["excellent beauty.", "digital dreams.", "bold textures."];
+    let i = 0, j = 0, del = false;
+    function type() {
+        const cur = words[i];
+        del ? j-- : j++;
+        document.getElementById('typewriter').textContent = cur.substring(0, j);
+        let speed = del ? 50 : 100;
+        if (!del && j === cur.length) { speed = 2000; del = true; }
+        else if (del && j === 0) { del = false; i = (i + 1) % words.length; speed = 500; }
+        setTimeout(type, speed);
+    }
+    type();
+
+    // 3. CANVAS
+    const canvas = document.getElementById('doodleCanvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = 250; }
+    window.addEventListener('resize', resize);
+    resize();
+    canvas.addEventListener('mousedown', () => drawing = true);
+    canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
+    canvas.addEventListener('mousemove', e => {
+        if (!drawing) return;
+        const r = canvas.getBoundingClientRect();
+        ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.strokeStyle = '#c4456e';
+        ctx.lineTo(e.clientX - r.left, e.clientY - r.top);
+        ctx.stroke(); ctx.beginPath(); ctx.moveTo(e.clientX - r.left, e.clientY - r.top);
+    });
+    document.getElementById('clearCanvas').addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+
+    // 4. CONTACT FORM HANDLING
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Visual feedback
+        const btn = form.querySelector('.submit-btn');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        btn.style.opacity = '0.7';
+        btn.style.pointerEvents = 'none';
+
+        // Simulate a real send delay
+        setTimeout(() => {
+            form.style.display = 'none';
+            success.style.display = 'block';
+        }, 1500);
+    });
+
+    // 5. REVEAL ANIMATION
+    function reveal() {
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
+        });
+    }
+    window.addEventListener('scroll', reveal);
+    reveal();
+
+    // 6. FILTERS
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelector('.filter-btn.active').classList.remove('active');
+            btn.classList.add('active');
+            const f = btn.dataset.filter;
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.display = (f === 'all' || card.dataset.category === f) ? 'flex' : 'none';
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
+```
 
             <a href="#project-1-popup" class="project-card">
                 <div class="img-wrapper">
