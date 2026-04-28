@@ -5,121 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Portfolio | Pink & White Modern Showcase</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="virochpokapam.css">
 
-    <style>
-        /* ===== GLOBAL STYLES ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background: #fff9fb; font-family: 'Inter', sans-serif; color: #2d2a2e; line-height: 1.6; overflow-x: hidden; cursor: default; }
-        a, button { cursor: pointer; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
-
-        /* AMBIENT BACKGROUND */
-        .ambient-shape { position: fixed; border-radius: 50%; filter: blur(60px); z-index: 0; animation: float 15s infinite ease-in-out alternate; opacity: 0.6; pointer-events: none; }
-        .shape-1 { width: 300px; height: 300px; background: #ffe2ef; top: -100px; left: -100px; }
-        .shape-2 { width: 400px; height: 400px; background: #fff0f5; bottom: -100px; right: -100px; animation-delay: -5s; }
-        .shape-3 { width: 250px; height: 250px; background: #fbebf2; top: 40%; left: 60%; animation-delay: -10s; }
-        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, 50px) scale(1.1); } }
-
-        /* CURSOR */
-        .cursor-follower { position: fixed; width: 30px; height: 30px; border: 2px solid #f4accc; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background 0.2s; transition-timing-function: ease-out; }
-        .cursor-follower.hovering { width: 50px; height: 50px; background: rgba(244, 172, 204, 0.2); border-color: #c4456e; }
-
-        /* NAVBAR */
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; background: rgba(255, 249, 251, 0.85); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(255, 223, 234, 0.5); }
-        .logo { font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, #e8799b, #c4456e); -webkit-background-clip: text; color: transparent; font-family: 'Space Grotesk', monospace; letter-spacing: 1px; }
-        .nav-links { display: flex; gap: 2.5rem; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: #5a4651; transition: all 0.3s ease; padding-bottom: 4px; border-bottom: 2px solid transparent; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
-        .nav-links a:hover, .nav-links a.active { color: #c4456e; border-bottom-color: #f4accc; }
-
-        /* HERO */
-        .hero { margin: 4rem 0 6rem; scroll-margin-top: 100px; }
-        .hero-grid { display: flex; flex-wrap: wrap; gap: 4rem; align-items: center; }
-        .hero-text h1 { font-size: 3.8rem; font-weight: 700; margin-bottom: 1.8rem; color: #1a1518; font-family: 'Space Grotesk', sans-serif; line-height: 1.1; }
-        .typewriter-text { background: linear-gradient(120deg, #f5a3c7, #d45d85); -webkit-background-clip: text; color: transparent; border-right: 3px solid #c4456e; padding-right: 5px; animation: blink 0.75s step-end infinite; }
-        @keyframes blink { from, to { border-color: transparent } 50% { border-color: #c4456e; } }
-
-        .artist-statement-card { background: white; border-radius: 24px; padding: 2rem 2.5rem; box-shadow: 0 20px 40px -15px rgba(236, 112, 139, 0.12); border: 1px solid #ffdfea; transition: transform 0.3s ease; }
-        .artist-statement-card h3 { color: #b83b62; margin-bottom: 1rem; font-family: 'Space Grotesk'; font-size: 1.4rem; display: flex; align-items: center; gap: 10px; }
-        .hero-image { width: 100%; height: 500px; object-fit: cover; border-radius: 32px; box-shadow: 0 30px 60px -20px rgba(196, 69, 110, 0.3); }
-
-        /* PROJECTS */
-        .work-section { scroll-margin-top: 100px; }
-        .section-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; margin: 3rem 0 2rem; gap: 1rem; }
-        .section-title { font-size: 2.2rem; font-weight: 700; position: relative; font-family: 'Space Grotesk', sans-serif; }
-        .section-title:after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60%; height: 4px; background: linear-gradient(90deg, #f7afce, #ffc0dd); border-radius: 4px; }
-
-        .filter-btn { background: transparent; border: 2px solid #ffdfea; color: #b83b62; padding: 8px 20px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; margin-right: 5px; margin-bottom: 5px; }
-        .filter-btn.active, .filter-btn:hover { background: #c4456e; border-color: #c4456e; color: white; }
-
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
-        .project-card { background: white; border-radius: 24px; overflow: hidden; border: 1px solid #ffe2ef; transition: all 0.4s ease; text-decoration: none; color: inherit; display: block; }
-        .project-card:hover { transform: translateY(-12px); box-shadow: 0 30px 50px -15px rgba(196, 69, 110, 0.25); }
-        .project-img { height: 260px; background-size: cover; background-position: center; position: relative; display: flex; align-items: flex-start; justify-content: flex-end; padding: 1.5rem; }
-        .img-overlay { position: absolute; inset: 0; background: rgba(196, 69, 110, 0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; z-index: 5; }
-        .img-overlay i { font-size: 3rem; color: white; transform: translateY(20px); transition: 0.4s; }
-        .project-card:hover .img-overlay { opacity: 1; }
-        .project-card:hover .img-overlay i { transform: translateY(0); }
-
-        .mock-badge { background: rgba(255, 255, 255, 0.95); padding: 8px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; color: #a13458; z-index: 10; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-
-        .project-info { padding: 2rem; background: white; position: relative; z-index: 2; }
-        .project-info h3 { font-size: 1.5rem; color: #1a1518; margin-bottom: 0.5rem; font-family: 'Space Grotesk'; }
-        .project-tag { display: inline-block; background: #fff0f5; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: #c4456e; margin-bottom: 1rem; }
-
-        /* DOODLE TOOL */
-        .process-card { background: white; border-radius: 32px; padding: 3rem; margin: 4rem 0; border: 1px solid #ffeef5; box-shadow: 0 15px 35px -10px rgba(236, 112, 139, 0.08); }
-        #doodleCanvas { width: 100%; height: 250px; border: 3px dashed #ffc0dd; border-radius: 20px; background: #fffcfd; cursor: crosshair; }
-        .canvas-btn { background: #ffeef4; border: 1px solid #f4accc; color: #c4456e; padding: 8px 20px; border-radius: 50px; margin-top: 15px; transition: 0.3s; font-weight: 600; }
-        .canvas-btn:hover { background: #c4456e; color: white; }
-
-        /* CONTACT FORM */
-        .contact-section { padding: 4rem 0; scroll-margin-top: 100px; }
-        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center; }
-        .contact-info-box h2 { font-size: 2.5rem; font-family: 'Space Grotesk'; color: #1a1518; margin-bottom: 1.5rem; }
-        .contact-info-box p { font-size: 1.1rem; color: #5a4651; margin-bottom: 2rem; }
-        .contact-method { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; color: #b83b62; font-weight: 600; }
-        .contact-method i { width: 45px; height: 45px; background: #ffeef4; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
-
-        .contact-form-wrapper { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px); padding: 3rem; border-radius: 32px; border: 1px solid #ffdfea; box-shadow: 0 20px 40px rgba(196, 69, 110, 0.05); position: relative; }
-        .form-group { position: relative; margin-bottom: 25px; }
-        .form-input { width: 100%; padding: 12px 15px; background: rgba(255, 255, 255, 0.8); border: 2px solid #ffdfea; border-radius: 12px; font-family: 'Inter'; font-size: 1rem; outline: none; transition: 0.3s; color: #2d2a2e; }
-        .form-input:focus { border-color: #c4456e; background: white; }
-        .form-label { position: absolute; left: 15px; top: 12px; color: #a18a95; pointer-events: none; transition: 0.3s; }
-        .form-input:focus + .form-label, .form-input:not(:placeholder-shown) + .form-label { top: -22px; left: 5px; font-size: 0.85rem; color: #c4456e; font-weight: 700; }
-        .submit-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #e8799b, #c4456e); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 700; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(196, 69, 110, 0.3); }
-
-        #successMessage { display: none; text-align: center; padding: 2rem; }
-        #successMessage i { font-size: 4rem; color: #c4456e; margin-bottom: 1rem; animation: heartbeat 1.5s infinite; }
-        @keyframes heartbeat { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-
-        /* MODALS */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26, 21, 24, 0.7); backdrop-filter: blur(10px); z-index: 999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
-        .modal-overlay:target { display: flex; opacity: 1; }
-        .modal-content { background: #fff9fb; width: 90%; max-width: 900px; max-height: 85vh; overflow-y: auto; border-radius: 24px; padding: 3rem; position: relative; border: 1px solid #ffdfea; box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.3); animation: slideUp 0.5s forwards; }
-        @keyframes slideUp { from { transform: translateY(60px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .modal-close { position: absolute; top: 1.5rem; right: 2rem; font-size: 2rem; color: #c4456e; text-decoration: none; transition: 0.2s; background: #ffeef4; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .modal-close:hover { background: #c4456e; color: white; transform: rotate(90deg); }
-        .modal-body h2 { font-size: 2.5rem; color: #1a1518; margin-bottom: 0.5rem; font-family: 'Space Grotesk'; }
-        .modal-image { width: 100%; height: 450px; object-fit: cover; border-radius: 16px; margin-bottom: 2rem; box-shadow: 0 15px 35px -10px rgba(196, 69, 110, 0.2); }
-
-        /* VIDEO PLAYER STYLES */
-        .video-container { width: 100%; height: 450px; border-radius: 16px; overflow: hidden; margin-bottom: 2rem; box-shadow: 0 15px 35px -10px rgba(196, 69, 110, 0.2); background: #1a1518; }
-        .video-container video, .video-container iframe { width: 100%; height: 100%; object-fit: cover; border: none; }
-
-        /* FOOTER */
-        .footer { text-align: center; padding: 4rem 0; border-top: 1px solid #ffdfea; }
-        .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
-        .social-icons a { width: 50px; height: 50px; background: white; border: 1px solid #ffdfea; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d86a92; text-decoration: none; transition: 0.3s; }
-        .social-icons a:hover { background: #c4456e; color: white; transform: translateY(-5px); }
-
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 780px) { .navbar { flex-direction: column; } .hero-text h1 { font-size: 2.8rem; } .contact-form-wrapper { padding: 2rem; } .modal-content { padding: 2rem; } .video-container { height: 250px; } }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -132,9 +20,9 @@
     <nav class="navbar">
         <div class="logo">✦ ART PORTFOLIO</div>
         <div class="nav-links">
-            <a href="#work" class="active">Work</a>
-            <a href="#statement">Statement</a>
-            <a href="#contact">Contact</a>
+            <a href="#work" class="active" data-hover>Work</a>
+            <a href="#statement" data-hover>Statement</a>
+            <a href="#contact" data-hover>Contact</a>
         </div>
     </nav>
 
@@ -149,7 +37,7 @@
                 </div>
             </div>
             <div class="hero-media reveal active">
-                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" class="hero-image">
+                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" class="hero-image" alt="Hero Art">
             </div>
         </div>
     </div>
@@ -158,15 +46,15 @@
         <div class="section-header reveal">
             <h2 class="section-title">Featured projects</h2>
             <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="print">Print</button>
-                <button class="filter-btn" data-filter="3d">3D</button>
-                <button class="filter-btn" data-filter="video">Video</button>
+                <button class="filter-btn active" data-filter="all" data-hover>All</button>
+                <button class="filter-btn" data-filter="print" data-hover>Print</button>
+                <button class="filter-btn" data-filter="3d" data-hover>3D</button>
+                <button class="filter-btn" data-filter="video" data-hover>Video</button>
             </div>
         </div>
 
         <div class="projects-grid">
-            <a href="#popup1" class="project-card reveal" data-category="print">
+            <a href="#popup1" class="project-card reveal" data-category="print" data-hover>
                 <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800')">
                     <div class="mock-badge"><i class="fas fa-print"></i> LARGE FORMAT</div>
                     <div class="img-overlay"><i class="fas fa-eye"></i></div>
@@ -178,7 +66,7 @@
                 </div>
             </a>
 
-            <a href="#popup2" class="project-card reveal" data-category="3d">
+            <a href="#popup2" class="project-card reveal" data-category="3d" data-hover>
                 <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800')">
                     <div class="mock-badge"><i class="fas fa-cube"></i> 3D MODEL</div>
                     <div class="img-overlay"><i class="fas fa-eye"></i></div>
@@ -190,7 +78,7 @@
                 </div>
             </a>
 
-            <a href="#popup3" class="project-card reveal" data-category="video">
+            <a href="#popup3" class="project-card reveal" data-category="video" data-hover>
                 <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800')">
                     <div class="mock-badge"><i class="fas fa-video"></i> VIDEO ART</div>
                     <div class="img-overlay"><i class="fas fa-play"></i></div>
@@ -205,10 +93,10 @@
     </div>
 
     <div class="process-card reveal">
-        <h3 style="color: #b83b62; margin-bottom: 10px; font-family: 'Space Grotesk'; font-size: 1.8rem;"><i class="fas fa-paint-brush"></i> Interactive Doodle Space</h3>
-        <p style="color: #5a4651;">Sketch your thoughts below before you reach out!</p>
+        <h3 style="color: #b83b62; margin-bottom: 10px; font-family: 'Space Grotesk'; font-size: 1.5rem;"><i class="fas fa-paint-brush"></i> Interactive Doodle Space</h3>
+        <p style="color: #5a4651; font-size: 0.95rem;">Sketch your thoughts below before you reach out!</p>
         <canvas id="doodleCanvas"></canvas>
-        <button id="clearCanvas" class="canvas-btn"><i class="fas fa-eraser"></i> Reset Canvas</button>
+        <button id="clearCanvas" class="canvas-btn" data-hover><i class="fas fa-eraser"></i> Reset Canvas</button>
     </div>
 
     <section id="contact" class="contact-section reveal">
@@ -227,7 +115,6 @@
             <div class="contact-form-wrapper">
                 <form id="contactForm">
                     <input type="hidden" name="_honey">
-
                     <div class="form-group">
                         <input type="text" id="name" class="form-input" placeholder=" " required>
                         <label for="name" class="form-label">Full Name</label>
@@ -240,7 +127,7 @@
                         <textarea id="message" class="form-input" rows="5" placeholder=" " required style="resize: none;"></textarea>
                         <label for="message" class="form-label">Your Message</label>
                     </div>
-                    <button type="submit" class="submit-btn">
+                    <button type="submit" class="submit-btn" data-hover>
                         <span>Send Message</span><i class="fas fa-long-arrow-right"></i>
                     </button>
                 </form>
@@ -249,7 +136,7 @@
                     <i class="fas fa-heart"></i>
                     <h3>Message Sent!</h3>
                     <p>Thank you for reaching out. I'll be in touch soon!</p>
-                    <button class="canvas-btn" onclick="location.reload()" style="margin-top: 1rem;">Send another</button>
+                    <button class="canvas-btn" onclick="location.reload()" style="margin-top: 1rem;" data-hover>Send another</button>
                 </div>
             </div>
         </div>
@@ -257,10 +144,10 @@
 
     <footer class="footer">
         <div class="social-icons">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-behance"></i></a>
-            <a href="#"><i class="fab fa-vimeo-v"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#" data-hover><i class="fab fa-instagram"></i></a>
+            <a href="#" data-hover><i class="fab fa-behance"></i></a>
+            <a href="#" data-hover><i class="fab fa-vimeo-v"></i></a>
+            <a href="#" data-hover><i class="fas fa-envelope"></i></a>
         </div>
         <p>© 2026 · Digital Art Studio · Original Works Only</p>
     </footer>
@@ -268,7 +155,7 @@
 
 <div id="popup1" class="modal-overlay">
     <div class="modal-content">
-        <a href="#work" class="modal-close">&times;</a>
+        <a href="#work" class="modal-close" data-hover>&times;</a>
         <div class="modal-body">
             <h2>Ephemeral Topographies</h2>
             <div class="project-tag">Print · Archival ink</div>
@@ -280,7 +167,7 @@
 
 <div id="popup2" class="modal-overlay">
     <div class="modal-content">
-        <a href="#work" class="modal-close">&times;</a>
+        <a href="#work" class="modal-close" data-hover>&times;</a>
         <div class="modal-body">
             <h2>Morphic Resonance</h2>
             <div class="project-tag">3D · Blender · Real-time</div>
@@ -292,18 +179,16 @@
 
 <div id="popup3" class="modal-overlay">
     <div class="modal-content">
-        <a href="#work" class="modal-close">&times;</a>
+        <a href="#work" class="modal-close" data-hover>&times;</a>
         <div class="modal-body">
             <h2>Folds of Time</h2>
             <div class="project-tag">Film · 4K · Experimental</div>
-
             <div class="video-container">
                 <video controls poster="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200">
                     <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
-
             <p><strong>The Concept:</strong> A 9-minute experimental video essay that weaves together the themes of memory decay and technological glitches. "Folds of Time" visually represents how the human brain edits and corrupts memories over time.</p>
         </div>
     </div>
@@ -316,7 +201,7 @@
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
-    document.querySelectorAll('a, button, input, textarea, .filter-btn').forEach(el => {
+    document.querySelectorAll('a, button, input, textarea, .filter-btn, [data-hover]').forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
     });
@@ -335,11 +220,11 @@
     }
     type();
 
-    // 3. CANVAS
+    // 3. CANVAS (Height adjusted to 160px)
     const canvas = document.getElementById('doodleCanvas');
     const ctx = canvas.getContext('2d');
     let drawing = false;
-    function resize() { canvas.width = canvas.offsetWidth; canvas.height = 250; }
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = 160; }
     window.addEventListener('resize', resize);
     resize();
     canvas.addEventListener('mousedown', () => drawing = true);
@@ -386,19 +271,16 @@
         });
     });
 
-    // 7. MODAL BEHAVIORS
+    // 7. MODALS
     document.querySelectorAll('.modal-overlay').forEach(modal => {
         modal.addEventListener('click', function(event) {
             if (event.target === this) {
                 window.location.hash = '#work';
-                // Stop video from playing when modal closes
                 const video = this.querySelector('video');
                 if(video) video.pause();
             }
         });
     });
-
-    // Close modal on escape key and stop video
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && window.location.hash.includes('popup')) {
             const activeModal = document.querySelector(window.location.hash);
@@ -409,8 +291,6 @@
             window.location.hash = '#work';
         }
     });
-
-    // Stop video when the "X" is clicked
     document.querySelectorAll('.modal-close').forEach(closeBtn => {
         closeBtn.addEventListener('click', function() {
             const video = this.parentElement.parentElement.querySelector('video');
