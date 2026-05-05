@@ -58,7 +58,7 @@ a, button { cursor: pointer; }
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
 .project-card { background: white; border-radius: 24px; overflow: hidden; border: 1px solid #ffe2ef; transition: all 0.4s ease; text-decoration: none; color: inherit; display: block; }
 .project-card:hover { transform: translateY(-12px); box-shadow: 0 30px 50px -15px rgba(196, 69, 110, 0.25); }
-.project-img { height: 260px; background-size: cover; background-position: center; position: relative; display: flex; align-items: flex-start; justify-content: flex-end; padding: 1.5rem; }
+.project-img { height: 480px; background-size: cover; background-position: center; position: relative; display: flex; align-items: flex-start; justify-content: flex-end; padding: 1.5rem; }
 .img-overlay { position: absolute; inset: 0; background: rgba(196, 69, 110, 0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; z-index: 5; }
 .img-overlay i { font-size: 3rem; color: white; transform: translateY(20px); transition: 0.4s; }
 .project-card:hover .img-overlay { opacity: 1; }
