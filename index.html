@@ -1,20 +1,21 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Portfolio | Pink & White Modern Showcase</title>
-    <!-- Include model-viewer script -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="virochpokapam.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <div class="ambient-shape shape-1"></div>
 <div class="ambient-shape shape-2"></div>
 <div class="ambient-shape shape-3"></div>
 <div class="cursor-follower" id="cursorFollower"></div>
+
 <div class="container">
     <nav class="navbar">
         <div class="logo">✦ PAM"S ART PORTFOLIO</div>
@@ -24,6 +25,7 @@
             <a href="#contact" data-hover>Contact</a>
         </div>
     </nav>
+
     <div class="hero">
         <div class="hero-grid">
             <div class="hero-text reveal active">
@@ -39,6 +41,7 @@
             </div>
         </div>
     </div>
+
     <div id="work" class="work-section">
         <div class="section-header reveal">
             <h2 class="section-title">Featured projects</h2>
@@ -49,6 +52,7 @@
                 <button class="filter-btn" data-filter="video" data-hover>Video</button>
             </div>
         </div>
+
         <div class="projects-grid">
             <a href="#popup1" class="project-card reveal" data-category="print" data-hover>
                 <div class="project-img" style="background-image: url('assets/draft2.png')">
@@ -61,8 +65,9 @@
                     <p>Passport fused together for two identities.</p>
                 </div>
             </a>
+
             <a href="#popup2" class="project-card reveal" data-category="3d" data-hover>
-                <div class="project-img" style="background-image: url('assets/assignment2B.glb')">
+                <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800')">
                     <div class="mock-badge"><i class="fas fa-cube"></i> 3D MODEL</div>
                     <div class="img-overlay"><i class="fas fa-eye"></i></div>
                 </div>
@@ -72,6 +77,7 @@
                     <p>Procedural sculptures modeled in Blender with real-time shading.</p>
                 </div>
             </a>
+
             <a href="#popup3" class="project-card reveal" data-category="video" data-hover>
                 <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800')">
                     <div class="mock-badge"><i class="fas fa-video"></i> VIDEO ART</div>
@@ -85,12 +91,14 @@
             </a>
         </div>
     </div>
+
     <div class="process-card reveal">
         <h3 style="color: #b83b62; margin-bottom: 10px; font-family: 'Space Grotesk'; font-size: 1.5rem;"><i class="fas fa-paint-brush"></i> Interactive Doodle Space</h3>
         <p style="color: #5a4651; font-size: 0.95rem;">Sketch your thoughts below before you reach out!</p>
         <canvas id="doodleCanvas"></canvas>
         <button id="clearCanvas" class="canvas-btn" data-hover><i class="fas fa-eraser"></i> Reset Canvas</button>
     </div>
+
     <section id="contact" class="contact-section reveal">
         <div class="contact-container">
             <div class="contact-info-box">
@@ -103,6 +111,7 @@
                     <i class="fas fa-location-dot"></i><span>424-653-4829</span>
                 </div>
             </div>
+
             <div class="contact-form-wrapper">
                 <form id="contactForm">
                     <input type="hidden" name="_honey">
@@ -122,6 +131,7 @@
                         <span>Send Message</span><i class="fas fa-long-arrow-right"></i>
                     </button>
                 </form>
+
                 <div id="successMessage">
                     <i class="fas fa-heart"></i>
                     <h3>Message Sent!</h3>
@@ -131,6 +141,7 @@
             </div>
         </div>
     </section>
+
     <footer class="footer">
         <div class="social-icons">
             <a href="#" data-hover><i class="fab fa-instagram"></i></a>
@@ -141,6 +152,7 @@
         <p>© 2026 · Digital Art Studio · Original Works Only</p>
     </footer>
 </div>
+
 <div id="popup1" class="modal-overlay">
     <div class="modal-content">
         <a href="#work" class="modal-close" data-hover>&times;</a>
@@ -152,27 +164,19 @@
         </div>
     </div>
 </div>
+
 <div id="popup2" class="modal-overlay">
     <div class="modal-content">
         <a href="#work" class="modal-close" data-hover>&times;</a>
         <div class="modal-body">
-            <div class="project-tag" style="margin-bottom: 1rem;">3D · Blender · Real-time</div>
-            <section class="model-container">
-                <h2 style="margin-bottom: 1rem;">3D Model</h2>
-                <model-viewer
-                    src="assets/finishedproject2.png"
-                    alt="A 3D model of my bag"
-                    shadow-intensity="1"
-                    camera-controls
-                    auto-rotate
-                    ar
-                    style="width: 100%; height: 400px; border-radius: 12px; background-color: #fafafa; margin-bottom: 1.5rem;">
-                </model-viewer>
-            </section>
+            <h2>Morphic Resonance</h2>
+            <div class="project-tag">3D · Blender · Real-time</div>
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Morphic Resonance" class="modal-image">
             <p><strong>The Concept:</strong> Morphic Resonance is an investigation into digital biology. Can cold geometry evoke the warmth of organic life?</p>
         </div>
     </div>
 </div>
+
 <div id="popup3" class="modal-overlay">
     <div class="modal-content">
         <a href="#work" class="modal-close" data-hover>&times;</a>
@@ -189,6 +193,7 @@
         </div>
     </div>
 </div>
+
 <script>
     // 1. CURSOR
     const cursor = document.getElementById('cursorFollower');
@@ -196,10 +201,11 @@
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
-    document.querySelectorAll('a, button, input, textarea, .filter-btn, [data-hover], model-viewer').forEach(el => {
+    document.querySelectorAll('a, button, input, textarea, .filter-btn, [data-hover]').forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
     });
+
     // 2. TYPEWRITER
     const words = ["excellent beauty.", "creative dreams.", "pop textures."];
     let i = 0, j = 0, del = false;
@@ -213,6 +219,7 @@
         setTimeout(type, speed);
     }
     type();
+
     // 3. CANVAS (Height adjusted to 160px)
     const canvas = document.getElementById('doodleCanvas');
     const ctx = canvas.getContext('2d');
@@ -230,6 +237,7 @@
         ctx.stroke(); ctx.beginPath(); ctx.moveTo(e.clientX - r.left, e.clientY - r.top);
     });
     document.getElementById('clearCanvas').addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+
     // 4. CONTACT FORM
     const form = document.getElementById('contactForm');
     const success = document.getElementById('successMessage');
@@ -241,6 +249,7 @@
         btn.style.pointerEvents = 'none';
         setTimeout(() => { form.style.display = 'none'; success.style.display = 'block'; }, 1500);
     });
+
     // 5. REVEAL ANIMATION
     function reveal() {
         document.querySelectorAll('.reveal').forEach(el => {
@@ -249,6 +258,7 @@
     }
     window.addEventListener('scroll', reveal);
     reveal();
+
     // 6. FILTERS
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -260,6 +270,7 @@
             });
         });
     });
+
     // 7. MODALS
     document.querySelectorAll('.modal-overlay').forEach(modal => {
         modal.addEventListener('click', function(event) {
@@ -287,5 +298,6 @@
         });
     });
 </script>
+
 </body>
 </html>
