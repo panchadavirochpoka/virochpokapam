@@ -105,7 +105,7 @@ a, button { cursor: pointer; }
 .modal-close { position: absolute; top: 1.5rem; right: 2rem; font-size: 2rem; color: #c4456e; text-decoration: none; transition: 0.2s; background: #ffeef4; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
 .modal-close:hover { background: #c4456e; color: white; transform: rotate(90deg); }
 .modal-body h2 { font-size: 2.5rem; color: #1a1518; margin-bottom: 0.5rem; font-family: 'Space Grotesk'; }
-.modal-image { height: 480px; object-fit: cover; border-radius: 16px; margin-bottom: 2rem; box-shadow: 0 15px 35px -10px rgba(196, 69, 110, 0.2); }
+.modal-image { height: 720px; object-fit: cover; border-radius: 16px; margin-bottom: 2rem; box-shadow: 0 15px 35px -10px rgba(196, 69, 110, 0.2); }
 
 /* VIDEO PLAYER STYLES */
 .video-container { width: 100%; height: 450px; border-radius: 16px; overflow: hidden; margin-bottom: 2rem; box-shadow: 0 15px 35px -10px rgba(196, 69, 110, 0.2); background: #1a1518; }
